@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 dotenv.config({ path: '.env.local' });
 
 // Configuration
-const WS_PORT = 8888;
+const WS_PORT = process.env.PORT ? parseInt(process.env.PORT) : 8888;
 const MQTT_CLIENT_ID = `esg-alarm-server-${process.env.NODE_ENV || 'production'}`;
 
 async function startServer() {
