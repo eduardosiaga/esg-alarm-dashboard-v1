@@ -1,8 +1,190 @@
-node_modules
-# Keep environment variables out of version control
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Production
+*.next
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local env files
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Testing
+coverage/
+.nyc_output
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# IDE - Others
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+log/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+pgbouncer.log
+pgbouncer.pid
+
+# Prisma
 /lib/generated/prisma
+prisma/migrations/dev/
 
-# Server lock file
+# Lock files (for server deployment)
 server.lock
+*.lock.json
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Build artifacts
+*.pid
+*.seed
+*.pid.lock
+
+# Cache
+.cache/
+.parcel-cache/
+.webpack/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+python_scripts/__pycache__/
+
+# Testing files (development helpers)
+test-*.js
+test-*.ts
+debug-*.js
+debug-*.ts
+fix-*.js
+send-*.js
+verify-*.js
+check-*.js
+start-*.js
+interactive-ws-monitor.js
+websocket-server.ts
+
+# Package files
+*.tgz
+*.tar.gz
+*.zip
+
+# MCP related
+.mcp/
+.playwright-mcp/
+
+# Claude settings (local only)
+.claude/settings.local.json
+
+# ANIMA MCP
+.anima/
+
+# Config files with sensitive data
+config/users.txt
+
+# Null device file (Windows)
+nul
+NUL
+
+# Backup files
+*.bak
+*.backup
+*_backup
+*.old
+*_old
+
+# Editor temporary files
+*.sublime-project
+*.sublime-workspace
+.vscode-test/
+
+# npm/yarn/pnpm
+.npm
+.yarn-integrity
+.yarn/
+.pnpm-store/
+
+# Optional caches
+.eslintcache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# SWC
+.swc/
