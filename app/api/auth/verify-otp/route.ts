@@ -53,7 +53,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Verify OTP
+    console.log('[Verify OTP] Attempting OTP verification for:', email, 'with OTP:', otp);
     const isValid = await otpService.verifyOTP(email, otp);
+    console.log('[Verify OTP] Verification result:', isValid);
     
     if (!isValid) {
       // Increment rate limit attempts
@@ -114,12 +116,14 @@ export async function POST(request: NextRequest) {
     };
 
     // Create session
+    console.log('[Verify OTP] Creating session for user:', userProfile);
     const session = await sessionManager.createSession(userProfile, {
       rememberMe,
       deviceFingerprint,
       ipAddress: clientIp,
       userAgent
     });
+    console.log('[Verify OTP] Session created:', session);
 
     // Update last login
     await prisma.userProfile.update({

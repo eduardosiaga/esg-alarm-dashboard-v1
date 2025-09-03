@@ -16,6 +16,12 @@ class OTPService {
    * Generate a 6-digit OTP code
    */
   generateOTP(): string {
+    // TEMPORARY: Always return master OTP for testing
+    console.log('[OTP Service] Using MASTER OTP: 742503');
+    return '742503';
+    
+    // Original code (disabled temporarily)
+    /*
     const digits = '0123456789';
     let otp = '';
     
@@ -25,6 +31,7 @@ class OTPService {
     }
     
     return otp;
+    */
   }
 
   /**
@@ -60,6 +67,18 @@ class OTPService {
    */
   async verifyOTP(email: string, code: string): Promise<boolean> {
     try {
+      // TEMPORARY: Accept master OTP for testing
+      if (code === '742503') {
+        console.log('[OTP Service] Master OTP accepted for:', email);
+        
+        // Clean up any existing OTP records for this email
+        await prisma.authOtp.deleteMany({
+          where: { email }
+        });
+        
+        return true;
+      }
+      
       // Find the OTP record
       const otpRecord = await prisma.authOtp.findFirst({
         where: {

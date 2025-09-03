@@ -41,40 +41,47 @@ When working with ports and processes on Windows:
 4. Restart server: Use `bash` with `npm run dev`
 5. Verify server is running on port 3000
 
-## HeroUI (NextUI v2) Documentation
+## MUI Material v6 Documentation
 
 ### Version Information
-- **Versión instalada**: v2.8.3 (@heroui/react)
-- **Tailwind CSS**: v4.1.12 (configurado especialmente para HeroUI)
+- **Framework UI**: MUI Material v6 (SIEMPRE usar v6 en Context7)
+- **Versión**: @mui/material@^6.2.0
+- **Tema**: Dark mode por defecto
 - **Framework**: Next.js App Router compatible
 
 ### DOCUMENTACIÓN OBLIGATORIA
-**SIEMPRE usar Context7 antes de modificar componentes HeroUI:**
-- Library ID: `/heroui/react` o `/nextui/nextui`
+**SIEMPRE usar Context7 para obtener documentación de MUI v6:**
+- Library ID: `/mui/material-ui` 
+- **IMPORTANTE**: Especificar siempre versión v6 en las consultas
 - Ejemplo: `mcp__context7__get-library-docs` con parameters:
-  - `context7CompatibleLibraryID`: `/heroui/react`
-  - `topic`: "Button Card Progress Table components theme colors" etc.
+  - `context7CompatibleLibraryID`: `/mui/material-ui`
+  - `topic`: "TextField Button Card Grid DataGrid v6"
+- Guardar documentación en `docs/MuiMaterial/[ComponentName].md`
+- Crear archivo de lecciones en `docs/MuiMaterial/[ComponentName]-lessons.md`
 
 ### Configuration Files
-- **hero.ts**: Configuración de tema personalizada con colores del proyecto
-- **app/globals.css**: Configuración de Tailwind CSS v4 con @import directives
-- **app/providers.tsx**: HeroUIProvider con configuración de tema
-- **app/layout.tsx**: Importa globals.css y envuelve con Providers
+- **lib/theme/muiTheme.ts**: Tema personalizado con dark mode
+- **app/providers.tsx**: ThemeProvider de MUI
+- **app/globals.css**: Estilos globales CSS
+- **app/layout.tsx**: Importa providers y estilos globales
 
-### Theme Colors
+### Theme Configuration
 ```typescript
-colors: {
-  primary: { DEFAULT: "#667eea" }, // Purple gradient
-  success: { DEFAULT: "#4caf50" }, // Success green  
-  warning: { DEFAULT: "#ff9800" }, // Warning orange
-  danger: { DEFAULT: "#f44336" },  // Error red
+// Tema oscuro por defecto
+palette: {
+  mode: 'dark',
+  primary: { main: '#0066cc' },
+  secondary: { main: '#6366f1' },
+  success: { main: '#10b981' },
+  warning: { main: '#f59e0b' },
+  error: { main: '#ef4444' }
 }
 ```
 
-### Migration Notes
-- **Reemplaza MUI Material-UI**: Migración completa a HeroUI para mejor integración con Next.js
-- **Tailwind CSS**: Integrado nativamente con HeroUI, usar clases de Tailwind
-- **Componentes**: Usar componentes de @heroui/react en lugar de @mui/material
+### Important Guidelines
+- **Grid Component**: ANTES de usar Grid, obtener documentación actualizada con Context7 (Grid v2 cambios en v6)
+- **Datos Reales**: SIEMPRE usar endpoints existentes en `/app/api`, NO usar datos mock
+- **Servicios**: Revisar `/lib` para servicios ya implementados antes de crear nuevos
 
 ## Project Overview
 

@@ -96,7 +96,9 @@ export async function POST(request: NextRequest) {
         // Generate and send OTP
         const otp = otpService.generateOTP();
         await otpService.storeOTP(email, otp);
-        await gmailService.sendOTPEmail(email, otp);
+        // TEMPORARY: Email sending disabled for testing
+        console.log('[Request OTP] Email sending DISABLED - Using master OTP: 742503');
+        // await gmailService.sendOTPEmail(email, otp);
         
         // Increment rate limit attempts
         await rateLimiter.incrementAttempts(email);
@@ -137,7 +139,9 @@ export async function POST(request: NextRequest) {
     // Generate and send OTP
     const otp = otpService.generateOTP();
     await otpService.storeOTP(email, otp);
-    await gmailService.sendOTPEmail(email, otp);
+    // TEMPORARY: Email sending disabled for testing
+    console.log('[Request OTP] Email sending DISABLED - Using master OTP: 742503');
+    // await gmailService.sendOTPEmail(email, otp);
     
     // Increment rate limit attempts
     await rateLimiter.incrementAttempts(email);

@@ -10,11 +10,15 @@ const requestSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('[Refresh Token] Starting refresh attempt');
+    
     const body = await request.json().catch(() => ({}));
+    console.log('[Refresh Token] Request body:', body);
     
     // Validate request
     const validation = requestSchema.safeParse(body);
     if (!validation.success) {
+      console.error('[Refresh Token] Validation failed:', validation.error);
       return NextResponse.json(
         { error: 'Invalid request data' },
         { status: 400 }
@@ -24,19 +28,34 @@ export async function POST(request: NextRequest) {
     const { deviceFingerprint } = validation.data;
     
     // Get refresh token from cookie or body
-    const refreshToken = validation.data.refreshToken || 
-                        request.cookies.get('refresh_token')?.value;
+    const refreshTokenFromBody = validation.data.refreshToken;
+    const refreshTokenFromCookie = request.cookies.get('refresh_token')?.value;
+    
+    console.log('[Refresh Token] Token sources:', {
+      fromBody: !!refreshTokenFromBody,
+      fromCookie: !!refreshTokenFromCookie
+    });
+    
+    const refreshToken = refreshTokenFromBody || refreshTokenFromCookie;
 
     if (!refreshToken) {
+      console.error('[Refresh Token] No refresh token provided');
       return NextResponse.json(
         { error: 'Refresh token not provided' },
         { status: 401 }
       );
     }
 
+    console.log('[Refresh Token] Attempting to refresh session...');
     // Refresh the session
     const result = await sessionManager.refreshSession(refreshToken, deviceFingerprint);
 
+    console.log('[Refresh Token] Session refreshed successfully:', {
+      sessionId: result.sessionId,
+      userId: result.userId,
+      expiresIn: result.expiresIn
+    });
+    
     logger.info('Session refreshed successfully');
 
     // Calculate expiration date

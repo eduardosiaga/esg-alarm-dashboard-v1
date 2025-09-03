@@ -115,6 +115,8 @@ class SessionManager {
   async refreshSession(refreshToken: string, deviceFingerprint?: string): Promise<{
     accessToken: string;
     expiresIn: number;
+    sessionId: string;
+    userId: number;
   }> {
     try {
       // Verify refresh token
@@ -194,7 +196,9 @@ class SessionManager {
 
       return {
         accessToken: newAccessToken,
-        expiresIn: 900 // 15 minutes in seconds
+        expiresIn: 900, // 15 minutes in seconds
+        sessionId: session.id,
+        userId: user.id
       };
     } catch (error) {
       logger.error('Failed to refresh session', error);
