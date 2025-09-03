@@ -1,0 +1,20 @@
+[DEVELOPMENT] [2025-09-01 08:02:55.989] [ERROR] Query execution error | Data: {
+  "error": "functions in index predicate must be marked IMMUTABLE",
+  "stack": "error: functions in index predicate must be marked IMMUTABLE\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-09-01 10:01:10.961] [ERROR] Query execution error | Data: {
+  "error": "column \"created_by\" of relation \"user_profiles\" does not exist",
+  "stack": "error: column \"created_by\" of relation \"user_profiles\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-09-01 13:26:00.011] [ERROR] Query execution error | Data: {
+  "error": "DDL operations are not allowed globally",
+  "stack": "Error: DDL operations are not allowed globally\n    at executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:62:19)\n    at executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:30)\n    at file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:26\n    at file:///H:/03-development/mcps/postgres-mcp/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js:334:36\n    at file:///H:/03-development/mcps/postgres-mcp/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js:153:25\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+  "name": "Error"
+}
+[DEVELOPMENT] [2025-09-01 22:46:43.384] [ERROR] Query execution error | Data: {
+  "error": "DDL operations are not allowed for schema 'public'",
+  "stack": "Error: DDL operations are not allowed for schema 'public'\n    at executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:62:19)\n    at executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:30)\n    at file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:26\n    at file:///H:/03-development/mcps/postgres-mcp/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js:334:36\n    at file:///H:/03-development/mcps/postgres-mcp/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js:153:25\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+  "name": "Error"
+}

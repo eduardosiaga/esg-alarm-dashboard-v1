@@ -1,0 +1,1491 @@
+[DEVELOPMENT] [2025-08-29 09:19:48.634] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.700] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-29 09:19:48.700] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-29 09:19:48.700] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.701] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-29 09:19:48.701] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-29 09:19:48.705] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-29 09:19:48.712] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-29 09:19:48.713] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.713] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-29 09:19:48.713] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-29T15:19:48.723Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29T15:19:48.724Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.726] [WARN] Could not parse tables result: | Data: {
+  "data": [
+    {}
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.726] [INFO] Found 0 tables
+[DEVELOPMENT] [2025-08-29 09:20:06.494] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.557] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-29 09:20:06.558] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-29 09:20:06.558] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.558] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-29 09:20:06.559] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-29 09:20:06.563] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-29 09:20:06.571] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-29 09:20:06.571] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.571] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-29 09:20:06.571] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-29T15:20:06.580Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29T15:20:06.581Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.583] [WARN] Could not parse tables result: | Data: {
+  "data": [
+    {}
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.583] [INFO] Found 0 tables
+[DEVELOPMENT] [2025-08-29 09:25:06.507] [INFO] Performance Summary | Data: {
+  "uptime": "5 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.19 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:30:06.508] [INFO] Performance Summary | Data: {
+  "uptime": "10 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:32:00.294] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:32:05.424] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:35:06.508] [INFO] Performance Summary | Data: {
+  "uptime": "15 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:40:06.510] [INFO] Performance Summary | Data: {
+  "uptime": "20 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:45:06.512] [INFO] Performance Summary | Data: {
+  "uptime": "25 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:50:06.514] [INFO] Performance Summary | Data: {
+  "uptime": "30 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:55:06.530] [INFO] Performance Summary | Data: {
+  "uptime": "35 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:00:06.542] [INFO] Performance Summary | Data: {
+  "uptime": "40 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:05:06.547] [INFO] Performance Summary | Data: {
+  "uptime": "45 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:10:06.549] [INFO] Performance Summary | Data: {
+  "uptime": "50 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:15:06.565] [INFO] Performance Summary | Data: {
+  "uptime": "55 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:20:06.575] [INFO] Performance Summary | Data: {
+  "uptime": "60 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:25:06.585] [INFO] Performance Summary | Data: {
+  "uptime": "65 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:30:06.586] [INFO] Performance Summary | Data: {
+  "uptime": "70 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:35:06.586] [INFO] Performance Summary | Data: {
+  "uptime": "75 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:40:06.592] [INFO] Performance Summary | Data: {
+  "uptime": "80 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:45:06.602] [INFO] Performance Summary | Data: {
+  "uptime": "85 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:50:06.616] [INFO] Performance Summary | Data: {
+  "uptime": "90 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:55:06.630] [INFO] Performance Summary | Data: {
+  "uptime": "95 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:00:06.644] [INFO] Performance Summary | Data: {
+  "uptime": "100 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:05:06.649] [INFO] Performance Summary | Data: {
+  "uptime": "105 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:10:06.658] [INFO] Performance Summary | Data: {
+  "uptime": "110 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:15:06.661] [INFO] Performance Summary | Data: {
+  "uptime": "115 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:20:06.676] [INFO] Performance Summary | Data: {
+  "uptime": "120 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.503] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.567] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-29 11:26:36.567] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-29 11:26:36.568] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.568] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-29 11:26:36.568] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-29 11:26:36.572] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-29 11:26:36.580] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-29 11:26:36.581] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.581] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-29 11:26:36.581] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-29T17:26:36.589Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29T17:26:36.590Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.594] [WARN] Could not parse tables result: | Data: {
+  "data": [
+    {}
+  ]
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.594] [INFO] Found 0 tables
+[DEVELOPMENT] [2025-08-29 11:31:36.508] [INFO] Performance Summary | Data: {
+  "uptime": "5 minutes",
+  "cpuUser": "0.23 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:36:36.508] [INFO] Performance Summary | Data: {
+  "uptime": "10 minutes",
+  "cpuUser": "0.23 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:41:36.514] [INFO] Performance Summary | Data: {
+  "uptime": "15 minutes",
+  "cpuUser": "0.23 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:46:36.523] [INFO] Performance Summary | Data: {
+  "uptime": "20 minutes",
+  "cpuUser": "0.23 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:51:36.536] [INFO] Performance Summary | Data: {
+  "uptime": "25 minutes",
+  "cpuUser": "0.25 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:56:36.539] [INFO] Performance Summary | Data: {
+  "uptime": "30 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:01:36.541] [INFO] Performance Summary | Data: {
+  "uptime": "35 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:06:36.542] [INFO] Performance Summary | Data: {
+  "uptime": "40 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:11:36.544] [INFO] Performance Summary | Data: {
+  "uptime": "45 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:16:36.561] [INFO] Performance Summary | Data: {
+  "uptime": "50 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:21:36.569] [INFO] Performance Summary | Data: {
+  "uptime": "55 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:26:36.579] [INFO] Performance Summary | Data: {
+  "uptime": "60 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:31:36.585] [INFO] Performance Summary | Data: {
+  "uptime": "65 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:36:36.595] [INFO] Performance Summary | Data: {
+  "uptime": "70 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:41:36.605] [INFO] Performance Summary | Data: {
+  "uptime": "75 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:46:36.620] [INFO] Performance Summary | Data: {
+  "uptime": "80 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:51:36.625] [INFO] Performance Summary | Data: {
+  "uptime": "85 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:56:36.633] [INFO] Performance Summary | Data: {
+  "uptime": "90 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:01:36.644] [INFO] Performance Summary | Data: {
+  "uptime": "95 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:06:36.651] [INFO] Performance Summary | Data: {
+  "uptime": "100 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:11:36.661] [INFO] Performance Summary | Data: {
+  "uptime": "105 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:16:36.669] [INFO] Performance Summary | Data: {
+  "uptime": "110 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:21:36.679] [INFO] Performance Summary | Data: {
+  "uptime": "115 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:26:36.690] [INFO] Performance Summary | Data: {
+  "uptime": "120 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:31:36.697] [INFO] Performance Summary | Data: {
+  "uptime": "125 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:36:36.709] [INFO] Performance Summary | Data: {
+  "uptime": "130 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:41:36.718] [INFO] Performance Summary | Data: {
+  "uptime": "135 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:46:36.731] [INFO] Performance Summary | Data: {
+  "uptime": "140 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:51:36.735] [INFO] Performance Summary | Data: {
+  "uptime": "145 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:56:36.737] [INFO] Performance Summary | Data: {
+  "uptime": "150 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:01:36.746] [INFO] Performance Summary | Data: {
+  "uptime": "155 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:06:36.747] [INFO] Performance Summary | Data: {
+  "uptime": "160 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:11:36.757] [INFO] Performance Summary | Data: {
+  "uptime": "165 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:16:36.757] [INFO] Performance Summary | Data: {
+  "uptime": "170 minutes",
+  "cpuUser": "0.33 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:21:36.767] [INFO] Performance Summary | Data: {
+  "uptime": "175 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:26:36.780] [INFO] Performance Summary | Data: {
+  "uptime": "180 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:31:36.791] [INFO] Performance Summary | Data: {
+  "uptime": "185 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:36:36.794] [INFO] Performance Summary | Data: {
+  "uptime": "190 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:41:36.801] [INFO] Performance Summary | Data: {
+  "uptime": "195 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:46:36.802] [INFO] Performance Summary | Data: {
+  "uptime": "200 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:51:36.815] [INFO] Performance Summary | Data: {
+  "uptime": "205 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:56:36.822] [INFO] Performance Summary | Data: {
+  "uptime": "210 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:01:36.832] [INFO] Performance Summary | Data: {
+  "uptime": "215 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:06:36.837] [INFO] Performance Summary | Data: {
+  "uptime": "220 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:11:36.845] [INFO] Performance Summary | Data: {
+  "uptime": "225 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:16:36.850] [INFO] Performance Summary | Data: {
+  "uptime": "230 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:21:36.860] [INFO] Performance Summary | Data: {
+  "uptime": "235 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:26:36.874] [INFO] Performance Summary | Data: {
+  "uptime": "240 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:31:36.880] [INFO] Performance Summary | Data: {
+  "uptime": "245 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:36:36.883] [INFO] Performance Summary | Data: {
+  "uptime": "250 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:41:36.883] [INFO] Performance Summary | Data: {
+  "uptime": "255 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:46:36.900] [INFO] Performance Summary | Data: {
+  "uptime": "260 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:51:36.903] [INFO] Performance Summary | Data: {
+  "uptime": "265 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:56:36.904] [INFO] Performance Summary | Data: {
+  "uptime": "270 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:01:36.906] [INFO] Performance Summary | Data: {
+  "uptime": "275 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:06:36.916] [INFO] Performance Summary | Data: {
+  "uptime": "280 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:11:36.925] [INFO] Performance Summary | Data: {
+  "uptime": "285 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:16:36.925] [INFO] Performance Summary | Data: {
+  "uptime": "290 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:21:36.927] [INFO] Performance Summary | Data: {
+  "uptime": "295 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:26:36.927] [INFO] Performance Summary | Data: {
+  "uptime": "300 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:31:36.941] [INFO] Performance Summary | Data: {
+  "uptime": "305 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:36:36.945] [INFO] Performance Summary | Data: {
+  "uptime": "310 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:41:36.945] [INFO] Performance Summary | Data: {
+  "uptime": "315 minutes",
+  "cpuUser": "0.38 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:46:36.952] [INFO] Performance Summary | Data: {
+  "uptime": "320 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:51:36.966] [INFO] Performance Summary | Data: {
+  "uptime": "325 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:56:36.980] [INFO] Performance Summary | Data: {
+  "uptime": "330 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:01:36.985] [INFO] Performance Summary | Data: {
+  "uptime": "335 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:06:36.991] [INFO] Performance Summary | Data: {
+  "uptime": "340 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:11:37.004] [INFO] Performance Summary | Data: {
+  "uptime": "345 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:16:37.014] [INFO] Performance Summary | Data: {
+  "uptime": "350 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:21:37.023] [INFO] Performance Summary | Data: {
+  "uptime": "355 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:26:37.023] [INFO] Performance Summary | Data: {
+  "uptime": "360 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:31:37.027] [INFO] Performance Summary | Data: {
+  "uptime": "365 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:36:37.036] [INFO] Performance Summary | Data: {
+  "uptime": "370 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:41:37.040] [INFO] Performance Summary | Data: {
+  "uptime": "375 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:46:37.051] [INFO] Performance Summary | Data: {
+  "uptime": "380 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:51:37.050] [INFO] Performance Summary | Data: {
+  "uptime": "385 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:56:37.064] [INFO] Performance Summary | Data: {
+  "uptime": "390 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:01:37.073] [INFO] Performance Summary | Data: {
+  "uptime": "395 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:06:37.079] [INFO] Performance Summary | Data: {
+  "uptime": "400 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:11:37.082] [INFO] Performance Summary | Data: {
+  "uptime": "405 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:16:37.093] [INFO] Performance Summary | Data: {
+  "uptime": "410 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:21:37.106] [INFO] Performance Summary | Data: {
+  "uptime": "415 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:26:37.114] [INFO] Performance Summary | Data: {
+  "uptime": "420 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:31:37.114] [INFO] Performance Summary | Data: {
+  "uptime": "425 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:36:37.128] [INFO] Performance Summary | Data: {
+  "uptime": "430 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:41:37.132] [INFO] Performance Summary | Data: {
+  "uptime": "435 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:46:37.144] [INFO] Performance Summary | Data: {
+  "uptime": "440 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:51:37.156] [INFO] Performance Summary | Data: {
+  "uptime": "445 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:56:37.155] [INFO] Performance Summary | Data: {
+  "uptime": "450 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:01:37.165] [INFO] Performance Summary | Data: {
+  "uptime": "455 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:06:37.179] [INFO] Performance Summary | Data: {
+  "uptime": "460 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:11:37.187] [INFO] Performance Summary | Data: {
+  "uptime": "465 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:16:37.203] [INFO] Performance Summary | Data: {
+  "uptime": "470 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:21:37.203] [INFO] Performance Summary | Data: {
+  "uptime": "475 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:26:37.218] [INFO] Performance Summary | Data: {
+  "uptime": "480 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:31:37.227] [INFO] Performance Summary | Data: {
+  "uptime": "485 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:36:37.239] [INFO] Performance Summary | Data: {
+  "uptime": "490 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:41:37.254] [INFO] Performance Summary | Data: {
+  "uptime": "495 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:46:37.257] [INFO] Performance Summary | Data: {
+  "uptime": "500 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:51:37.261] [INFO] Performance Summary | Data: {
+  "uptime": "505 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:56:37.273] [INFO] Performance Summary | Data: {
+  "uptime": "510 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:01:37.277] [INFO] Performance Summary | Data: {
+  "uptime": "515 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:06:37.286] [INFO] Performance Summary | Data: {
+  "uptime": "520 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:11:37.297] [INFO] Performance Summary | Data: {
+  "uptime": "525 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:16:37.307] [INFO] Performance Summary | Data: {
+  "uptime": "530 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:21:37.310] [INFO] Performance Summary | Data: {
+  "uptime": "535 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:26:37.321] [INFO] Performance Summary | Data: {
+  "uptime": "540 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:31:37.331] [INFO] Performance Summary | Data: {
+  "uptime": "545 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:36:37.345] [INFO] Performance Summary | Data: {
+  "uptime": "550 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:41:37.353] [INFO] Performance Summary | Data: {
+  "uptime": "555 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:46:37.354] [INFO] Performance Summary | Data: {
+  "uptime": "560 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:51:37.368] [INFO] Performance Summary | Data: {
+  "uptime": "565 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:56:37.376] [INFO] Performance Summary | Data: {
+  "uptime": "570 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:01:37.385] [INFO] Performance Summary | Data: {
+  "uptime": "575 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:06:37.386] [INFO] Performance Summary | Data: {
+  "uptime": "580 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:11:37.396] [INFO] Performance Summary | Data: {
+  "uptime": "585 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:16:37.411] [INFO] Performance Summary | Data: {
+  "uptime": "590 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:21:37.415] [INFO] Performance Summary | Data: {
+  "uptime": "595 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:26:37.417] [INFO] Performance Summary | Data: {
+  "uptime": "600 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:31:37.432] [INFO] Performance Summary | Data: {
+  "uptime": "605 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:32:09.667] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:15.098] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:36.047] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:42.956] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:50.944] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:57.397] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:33:06.212] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:33:16.975] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:02.377] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:15.146] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:15.150] [ERROR] Query execution error | Data: {
+  "error": "column reference \"column_name\" is ambiguous",
+  "stack": "error: column reference \"column_name\" is ambiguous\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-29 21:35:21.347] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:35.507] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:36:37.432] [INFO] Performance Summary | Data: {
+  "uptime": "610 minutes",
+  "cpuUser": "0.47 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:41:37.434] [INFO] Performance Summary | Data: {
+  "uptime": "615 minutes",
+  "cpuUser": "0.47 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:41:47.237] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:46:37.437] [INFO] Performance Summary | Data: {
+  "uptime": "620 minutes",
+  "cpuUser": "0.47 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:51:21.119] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:32.487] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:37.450] [INFO] Performance Summary | Data: {
+  "uptime": "625 minutes",
+  "cpuUser": "0.47 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:51:42.893] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:50.809] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:55:20.694] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:55:59.125] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:56:37.455] [INFO] Performance Summary | Data: {
+  "uptime": "630 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:01:37.470] [INFO] Performance Summary | Data: {
+  "uptime": "635 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:06:37.472] [INFO] Performance Summary | Data: {
+  "uptime": "640 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:11:37.478] [INFO] Performance Summary | Data: {
+  "uptime": "645 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:16:37.479] [INFO] Performance Summary | Data: {
+  "uptime": "650 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:21:37.491] [INFO] Performance Summary | Data: {
+  "uptime": "655 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:26:37.495] [INFO] Performance Summary | Data: {
+  "uptime": "660 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:28:28.799] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:29:52.417] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:31:37.496] [INFO] Performance Summary | Data: {
+  "uptime": "665 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:31:53.727] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:32:00.889] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:36:37.508] [INFO] Performance Summary | Data: {
+  "uptime": "670 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:41:37.511] [INFO] Performance Summary | Data: {
+  "uptime": "675 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:46:37.513] [INFO] Performance Summary | Data: {
+  "uptime": "680 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:51:37.519] [INFO] Performance Summary | Data: {
+  "uptime": "685 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:56:37.526] [INFO] Performance Summary | Data: {
+  "uptime": "690 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:01:37.526] [INFO] Performance Summary | Data: {
+  "uptime": "695 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:06:37.535] [INFO] Performance Summary | Data: {
+  "uptime": "700 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:11:37.550] [INFO] Performance Summary | Data: {
+  "uptime": "705 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:16:37.553] [INFO] Performance Summary | Data: {
+  "uptime": "710 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:21:37.554] [INFO] Performance Summary | Data: {
+  "uptime": "715 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:26:34.756] [INFO] Performance Summary | Data: {
+  "uptime": "720 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:31:34.764] [INFO] Performance Summary | Data: {
+  "uptime": "725 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:36:34.770] [INFO] Performance Summary | Data: {
+  "uptime": "730 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.19 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:41:34.773] [INFO] Performance Summary | Data: {
+  "uptime": "735 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.19 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:46:34.779] [INFO] Performance Summary | Data: {
+  "uptime": "740 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.19 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.028] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.095] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-29 23:47:49.095] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-29 23:47:49.095] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.096] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-29 23:47:49.096] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-29 23:47:49.100] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-29 23:47:49.107] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-29 23:47:49.108] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.108] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-29 23:47:49.108] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-30T05:47:49.118Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-30T05:47:49.118Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.123] [INFO] Found 5 tables
+[DEVELOPMENT] [2025-08-29 23:52:49.037] [INFO] Performance Summary | Data: {
+  "uptime": "5 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:57:49.051] [INFO] Performance Summary | Data: {
+  "uptime": "10 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}

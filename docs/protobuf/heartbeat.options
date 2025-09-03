@@ -1,0 +1,11 @@
+# nanopb options file for heartbeat.proto
+# Controls field sizes and memory allocation
+
+# Firmware string has a maximum size
+Heartbeat.firmware max_size:16
+
+# SecureHeartbeat payload has reasonable size limit
+SecureHeartbeat.payload max_size:256
+
+# HMAC is always 32 bytes
+SecureHeartbeat.hmac max_size:32

@@ -1,0 +1,28 @@
+{
+    "mcpServers": {
+      "filesystem": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "npx",
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "H:\\03-development\\apps-web\\evo-dtvax-nextjs",
+          "H:\\03-development\\apps-server\\node-js\\esgLink-bot-v2\\esglink-backend"
+        ]
+      },
+      "postgres": {
+        "command": "node",
+        "args": ["H:\\03-development\\mcps\\postgres-mcp\\dist\\index.js"],
+        "env": {
+            "POSTGRES_HOST": "localhost",
+            "POSTGRES_PORT": "5432",
+            "POSTGRES_USER": "postgres",
+            "POSTGRES_PASSWORD": "Ob9eJjUIaMB3R0J",
+            "POSTGRES_DB": "esag-alarm-db",
+            "NODE_ENV": "development"
+        }
+        }
+    }
+  }
+  

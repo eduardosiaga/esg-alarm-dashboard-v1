@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "nanopb.proto";
+
+// Heartbeat message for ESP32 alarm system
+message Heartbeat {
+  uint32 timestamp = 1;      // Unix timestamp (seconds since 1970)
+  uint32 device_db_id = 2;   // Device database ID
+  float temperature = 3;     // Temperature in Celsius
+  float humidity = 4;        // Humidity percentage
+  bool panic1 = 5;           // Panic button 1 state
+  bool panic2 = 6;           // Panic button 2 state
+  bool siren = 7;            // Siren output state
+  bool turret = 8;           // Turret light state
+  bool box_sw = 9;           // Box tamper switch
+  uint32 uptime = 10;        // Uptime in seconds
+  uint32 eth_interface = 11; // 0=WiFi, 1=Ethernet
+  string firmware = 12 [(nanopb).max_size = 16]; // Firmware version string (max 16 chars)
+  uint32 fan_pwm_duty = 13;  // Fan PWM duty cycle (0-100%)
+}
+
+// HMAC protection is implemented at transport layer using generic wrapper
+// No need for SecureHeartbeat message type

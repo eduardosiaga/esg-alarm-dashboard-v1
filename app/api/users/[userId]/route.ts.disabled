@@ -1,0 +1,303 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { withRole, AuthenticatedRequest } from '@/middleware/auth';
+import { prisma } from '@/lib/db/prisma';
+import { gmailService } from '@/lib/email/gmail-service';
+import { sessionManager } from '@/lib/auth/session-manager';
+import { logger } from '@/lib/utils/logger';
+import { z } from 'zod';
+
+interface RouteParams {
+  params: {
+    userId: string;
+  };
+}
+
+const updateUserSchema = z.object({
+  name: z.string().min(2).optional(),
+  role: z.enum(['SUPERADMIN', 'ADMIN', 'OPERATOR', 'VIEWER']).optional(),
+  accountId: z.number().optional(),
+  permissions: z.array(z.string()).optional(),
+  isActive: z.boolean().optional(),
+  isApproved: z.boolean().optional()
+});
+
+/**
+ * GET /api/users/[userId] - Get user details
+ */
+export const GET = withRole(async (req: AuthenticatedRequest, { params }: RouteParams) => {
+  try {
+    const userId = parseInt(params.userId);
+
+    // Build where clause based on user role
+    const where: any = { id: userId };
+    
+    // ADMIN can only see users in their account
+    if (req.user?.role === 'ADMIN') {
+      where.accountId = req.user.accountId;
+    }
+
+    const user = await prisma.userProfile.findFirst({
+      where,
+      include: {
+        account: true,
+        user_permissions: true,
+        groups: {
+          include: {
+            group: true
+          }
+        }
+      }
+    });
+
+    if (!user) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+        accountId: user.accountId,
+        accountName: user.account?.name,
+        permissions: user.user_permissions.map(p => p.permission),
+        groups: user.groups.map(g => ({
+          id: g.group.id,
+          name: g.group.name
+        })),
+        isActive: user.isActive,
+        isApproved: user.isApproved,
+        lastLogin: user.lastLogin,
+        createdAt: user.createdAt
+      }
+    });
+
+  } catch (error) {
+    logger.error('Failed to get user details', error);
+    return NextResponse.json(
+      { error: 'Failed to retrieve user' },
+      { status: 500 }
+    );
+  }
+}, ['SUPERADMIN', 'ADMIN']);
+
+/**
+ * PATCH /api/users/[userId] - Update user
+ */
+export const PATCH = withRole(async (req: AuthenticatedRequest, { params }: RouteParams) => {
+  try {
+    const userId = parseInt(params.userId);
+    const body = await req.json();
+    
+    // Validate request
+    const validation = updateUserSchema.safeParse(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        { error: validation.error.issues[0].message },
+        { status: 400 }
+      );
+    }
+
+    const { name, role, accountId, permissions, isActive, isApproved } = validation.data;
+
+    // Get existing user
+    const existingUser = await prisma.userProfile.findUnique({
+      where: { id: userId }
+    });
+
+    if (!existingUser) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      );
+    }
+
+    // Check permissions
+    if (req.user?.role === 'ADMIN') {
+      // ADMIN can only update users in their account
+      if (existingUser.accountId !== req.user.accountId) {
+        return NextResponse.json(
+          { error: 'You can only update users in your account' },
+          { status: 403 }
+        );
+      }
+      // ADMIN cannot promote to SUPERADMIN
+      if (role === 'SUPERADMIN') {
+        return NextResponse.json(
+          { error: 'You cannot promote users to SUPERADMIN' },
+          { status: 403 }
+        );
+      }
+      // ADMIN cannot change account assignments
+      if (accountId && accountId !== req.user.accountId) {
+        return NextResponse.json(
+          { error: 'You cannot move users to different accounts' },
+          { status: 403 }
+        );
+      }
+    }
+
+    // Store old values for audit
+    const oldValues = {
+      name: existingUser.name,
+      role: existingUser.role,
+      accountId: existingUser.accountId,
+      isActive: existingUser.isActive,
+      isApproved: existingUser.isApproved
+    };
+
+    // Update user
+    const updatedUser = await prisma.userProfile.update({
+      where: { id: userId },
+      data: {
+        ...(name && { name }),
+        ...(role && { role }),
+        ...(accountId !== undefined && { accountId: accountId }),
+        ...(isActive !== undefined && { isActive: isActive }),
+        ...(isApproved !== undefined && { isApproved: isApproved })
+      }
+    });
+
+    // Update permissions if provided
+    if (permissions !== undefined) {
+      // Delete existing permissions
+      await prisma.userPermission.deleteMany({
+        where: { userId: userId }
+      });
+      
+      // Add new permissions
+      if (permissions.length > 0) {
+        await prisma.userPermission.createMany({
+          data: permissions.map(permission => ({
+            userId: userId,
+            permission
+          }))
+        });
+      }
+    }
+
+    // Send approval email if user was just approved
+    if (!existingUser.isApproved && isApproved) {
+      await gmailService.sendApprovalEmail(existingUser.email, updatedUser.name);
+    }
+
+    // Revoke all sessions if user was deactivated
+    if (existingUser.isActive && isActive === false) {
+      await sessionManager.revokeAllUserSessions(userId);
+      logger.info(`All sessions revoked for deactivated user: ${existingUser.email}`);
+    }
+
+    // Create audit log
+    await prisma.auditLog.create({
+      data: {
+        userId: req.user!.id,
+        accountId: req.user!.accountId,
+        action: 'user_updated',
+        entityType: 'user',
+        entityId: userId,
+        oldValues: oldValues,
+        newValues: {
+          name: updatedUser.name,
+          role: updatedUser.role,
+          accountId: updatedUser.accountId,
+          isActive: updatedUser.isActive,
+          isApproved: updatedUser.isApproved,
+          permissions
+        }
+      }
+    });
+
+    logger.info(`User ${existingUser.email} updated by ${req.user?.email}`);
+
+    return NextResponse.json({
+      success: true,
+      user: {
+        id: updatedUser.id,
+        email: updatedUser.email,
+        name: updatedUser.name,
+        role: updatedUser.role,
+        accountId: updatedUser.accountId,
+        isActive: updatedUser.isActive,
+        isApproved: updatedUser.isApproved
+      }
+    });
+
+  } catch (error) {
+    logger.error('Failed to update user', error);
+    return NextResponse.json(
+      { error: 'Failed to update user' },
+      { status: 500 }
+    );
+  }
+}, ['SUPERADMIN', 'ADMIN']);
+
+/**
+ * DELETE /api/users/[userId] - Delete user (SUPERADMIN only)
+ */
+export const DELETE = withRole(async (req: AuthenticatedRequest, { params }: RouteParams) => {
+  try {
+    const userId = parseInt(params.userId);
+
+    // Prevent self-deletion
+    if (userId === req.user?.id) {
+      return NextResponse.json(
+        { error: 'You cannot delete your own account' },
+        { status: 400 }
+      );
+    }
+
+    // Get user to delete
+    const userToDelete = await prisma.userProfile.findUnique({
+      where: { id: userId }
+    });
+
+    if (!userToDelete) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      );
+    }
+
+    // Revoke all sessions before deletion
+    await sessionManager.revokeAllUserSessions(userId);
+
+    // Delete user (cascade will handle related records)
+    await prisma.userProfile.delete({
+      where: { id: userId }
+    });
+
+    // Create audit log
+    await prisma.auditLog.create({
+      data: {
+        userId: req.user!.id,
+        accountId: req.user!.accountId,
+        action: 'user_deleted',
+        entityType: 'user',
+        entityId: userId,
+        oldValues: {
+          email: userToDelete.email,
+          name: userToDelete.name,
+          role: userToDelete.role
+        }
+      }
+    });
+
+    logger.info(`User ${userToDelete.email} deleted by ${req.user?.email}`);
+
+    return NextResponse.json({
+      success: true,
+      message: 'User deleted successfully'
+    });
+
+  } catch (error) {
+    logger.error('Failed to delete user', error);
+    return NextResponse.json(
+      { error: 'Failed to delete user' },
+      { status: 500 }
+    );
+  }
+}, ['SUPERADMIN']);

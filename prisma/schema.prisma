@@ -1,0 +1,507 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
+}
+
+// Enums
+enum RoleType {
+  SUPERADMIN
+  ADMIN
+  OPERATOR
+  VIEWER
+  
+  @@map("role_type")
+}
+
+enum DeviceState {
+  BOOT
+  INIT
+  CONNECTING
+  NORMAL
+  ALARM
+  MAINTENANCE
+  ERROR
+  CRITICAL
+}
+
+enum ChangeType {
+  ALARM
+  STATE_CHANGE
+  CONNECTION
+  SENSOR_DATA
+  PERIODIC
+  MANUAL
+  MULTIPLE
+}
+
+enum AlarmType {
+  UNKNOWN
+  PANIC1
+  PANIC2
+  TAMPER
+  FIRE
+  INTRUSION
+  MEDICAL
+  DURESS
+  OUTPUT_EVENT
+}
+
+enum EventState {
+  INACTIVE
+  ACTIVE
+  TEST
+  STARTING
+  STOPPING
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum CommandType {
+  UNKNOWN
+  SYSTEM
+  CONFIG
+  OUTPUT
+  DIAGNOSTIC
+  OTA
+}
+
+enum CommandStatus {
+  PENDING
+  SENT
+  ACKNOWLEDGED
+  COMPLETED
+  FAILED
+  TIMEOUT
+  CANCELLED
+}
+
+// Models
+model Device {
+  id                Int              @id @default(autoincrement())
+  macAddress        String           @unique @map("mac_address") @db.VarChar(17)
+  hostname          String?          @db.VarChar(32)
+  country           String?          @db.VarChar(3)
+  zone              Int?
+  latitude          Decimal?         @db.Decimal(10, 7)
+  longitude         Decimal?         @db.Decimal(10, 7)
+  locationDesc      String?          @map("location_desc") @db.Text
+  installationDate  DateTime?        @map("installation_date") @db.Timestamptz(6)
+  notes             String?          @db.Text
+  active            Boolean          @default(true)
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  deviceStatus      DeviceStatus?
+  telemetry         DeviceTelemetry[]   // Renamed from heartbeats
+  alarms            DeviceAlarm[]       // Renamed from alarmEvents
+  commands          DeviceCommand[]     // Renamed from commandLogs
+  groupAssignments  GroupDeviceAssignment[]
+  accountAssignments DeviceAccountAssignment[]
+  auditAccess       AuditDeviceAccess[]
+  installation      DeviceInstallation?
+
+  @@map("device")
+}
+
+model DeviceStatus {
+  deviceId          Int              @id @map("device_id")
+  isOnline          Boolean          @default(false) @map("is_online")
+  lastSeen          DateTime?        @map("last_seen") @db.Timestamptz(6)
+  lastLogin         DateTime?        @map("last_login") @db.Timestamptz(6)
+  firmwareVersion   String?          @map("firmware_version") @db.VarChar(16)
+  partition         Int?
+  otaValidated      Boolean?         @map("ota_validated")
+  uptime            Int?
+  bootCount         Int              @default(0) @map("boot_count")
+  deviceState       String?          @map("device_state") @db.VarChar(20)
+  stateDuration     Int?             @map("state_duration")
+  freeHeap          Int?             @map("free_heap")
+  minHeap           Int?             @map("min_heap")
+  networkType       String?          @map("network_type") @db.VarChar(10)
+  ipAddress         String?          @map("ip_address") @db.Inet
+  rssi              Int?
+  connected         Boolean?
+  hasIp             Boolean?         @map("has_ip")
+  mqttConnected     Boolean?         @map("mqtt_connected")
+  ntpSynced         Boolean?         @map("ntp_synced")
+  lastNtpSync       DateTime?        @map("last_ntp_sync") @db.Timestamptz(6)
+  panic1            Boolean          @default(false)
+  panic2            Boolean          @default(false)
+  boxSw             Boolean          @default(false) @map("box_sw")
+  siren             Boolean          @default(false)
+  turret            Boolean          @default(false)
+  panic1Count       Int              @default(0) @map("panic1_count")
+  panic2Count       Int              @default(0) @map("panic2_count")
+  tamperCount       Int              @default(0) @map("tamper_count")
+  wifiDisconnects   Int              @default(0) @map("wifi_disconnects")
+  mqttDisconnects   Int              @default(0) @map("mqtt_disconnects")
+  errorCount        Int              @default(0) @map("error_count")
+  temperature       Float?           @db.Real
+  humidity          Float?           @db.Real
+  fanPwmDuty        Int?             @map("fan_pwm_duty") @db.SmallInt
+  errorFlags        Int              @default(0) @map("error_flags")
+  deviceSynced      Boolean          @default(false) @map("device_synced")
+  lastSyncAttempt   DateTime?        @map("last_sync_attempt") @db.Timestamptz(6)
+  updatedAt         DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  device            Device           @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@map("device_status")
+}
+
+model DeviceTelemetry {  // Renamed from Heartbeat
+  time              DateTime         @map("time") @db.Timestamptz(6)
+  deviceId          Int              @map("device_id")
+  temperature       Float?           @db.Real
+  humidity          Float?           @db.Real
+  fanPwmDuty        Int?             @map("fan_pwm_duty") @db.SmallInt
+  panic1            Boolean?
+  panic2            Boolean?
+  siren             Boolean?
+  turret            Boolean?
+  boxSw             Boolean?         @map("box_sw")
+  changeType        ChangeType       @map("change_type")
+
+  // Relations
+  device            Device           @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@id([deviceId, time])
+  @@index([deviceId, changeType, time])
+  @@map("device_telemetry")
+}
+
+model DeviceAlarm {  // Renamed from AlarmEvent
+  id                Int              @id @default(autoincrement())
+  deviceId          Int              @map("device_id")
+  sequence          Int
+  timestamp         DateTime         @db.Timestamptz(6)
+  alarmType         AlarmType        @map("alarm_type")
+  eventState        EventState       @map("event_state")
+  priority          Priority         @default(MEDIUM)
+  physicalState     Boolean          @default(false) @map("physical_state")
+  outputType        Int?             @map("output_type")
+  patternType       Int?             @map("pattern_type")
+  durationSeconds   Int?             @map("duration_seconds")
+  elapsedSeconds    Int?             @map("elapsed_seconds")
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  device            Device           @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@index([deviceId, timestamp])
+  @@index([alarmType, eventState])
+  @@index([priority, deviceId])
+  @@index([deviceId, eventState])
+  @@index([deviceId, outputType, patternType])
+  @@map("device_alarms")
+}
+
+model DeviceCommand {  // Renamed from CommandLog
+  id                Int              @id @default(autoincrement())
+  deviceId          Int              @map("device_id")
+  requestId         String           @unique @map("request_id") @db.Uuid
+  sequence          Int
+  timestamp         DateTime         @db.Timestamptz(6)
+  commandType       CommandType      @map("command_type")
+  commandData       Json             @map("command_data")
+  authLevel         Int?             @default(0) @map("auth_level")
+  status            CommandStatus    @default(PENDING)
+  sentAt            DateTime?        @map("sent_at") @db.Timestamptz(6)
+  acknowledgedAt    DateTime?        @map("acknowledged_at") @db.Timestamptz(6)
+  completedAt       DateTime?        @map("completed_at") @db.Timestamptz(6)
+  failedAt          DateTime?        @map("failed_at") @db.Timestamptz(6)
+  responseData      Json?            @map("response_data")
+  responseCode      Int?             @map("response_code")
+  errorMessage      String?          @map("error_message") @db.Text
+  retryCount        Int              @default(0) @map("retry_count")
+  maxRetries        Int              @default(3) @map("max_retries")
+  nextRetryAt       DateTime?        @map("next_retry_at") @db.Timestamptz(6)
+  initiatedBy       String?          @map("initiated_by") @db.VarChar(50)
+  notes             String?          @db.Text
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  device            Device           @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@index([deviceId])
+  @@index([status])
+  @@index([commandType])
+  @@index([timestamp])
+  @@index([deviceId, status])
+  @@map("device_commands")
+}
+
+// ===============================================
+// Authentication & User Management Models
+// ===============================================
+
+model AuthAccount {
+  id                Int              @id @default(autoincrement())
+  name              String           @db.VarChar(255)
+  emailDomain       String?          @map("email_domain") @db.VarChar(255)
+  parentAccountId   Int?             @map("parent_account_id")
+  isActive          Boolean          @default(true) @map("is_active")
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  parentAccount     AuthAccount?     @relation("AccountHierarchy", fields: [parentAccountId], references: [id])
+  childAccounts     AuthAccount[]    @relation("AccountHierarchy")
+  users             UserProfile[]
+  groups            GroupDefinition[]
+  deviceAssignments DeviceAccountAssignment[]
+  auditLogs         AuditLog[]
+
+  @@map("auth_accounts")
+}
+
+model UserProfile {
+  id                Int              @id @default(autoincrement())
+  accountId         Int?             @map("account_id")
+  email             String           @unique @db.VarChar(255)
+  name              String           @db.VarChar(255)
+  role              RoleType
+  isApproved        Boolean          @default(false) @map("is_approved")
+  approvedBy        Int?             @map("approved_by")
+  approvedAt        DateTime?        @map("approved_at") @db.Timestamptz(6)
+  isActive          Boolean          @default(true) @map("is_active")
+  lastLogin         DateTime?        @map("last_login") @db.Timestamptz(6)
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  account           AuthAccount?     @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  approver          UserProfile?     @relation("UserApproval", fields: [approvedBy], references: [id])
+  approvedUsers     UserProfile[]    @relation("UserApproval")
+  sessions          AuthSession[]
+  permissions       UserPermission[]
+  createdGroups     GroupDefinition[]
+  groupAssignments  GroupDeviceAssignment[] @relation("AssignedByUser")
+  deviceAssignments DeviceAccountAssignment[] @relation("DeviceAssignedByUser")
+  deviceUnassignments DeviceAccountAssignment[] @relation("DeviceUnassignedByUser")
+  permissionsGranted UserPermission[] @relation("PermissionGrantedBy")
+  auditLogs         AuditLog[]
+  deviceAccess      AuditDeviceAccess[]
+
+  @@index([accountId])
+  @@index([email])
+  @@index([role])
+  @@map("user_profiles")
+}
+
+model AuthSession {
+  id                String           @id @default(uuid()) @db.Uuid
+  userId            Int              @map("user_id")
+  accessTokenHash   String           @map("access_token_hash") @db.VarChar(64)
+  refreshTokenHash  String           @unique @map("refresh_token_hash") @db.VarChar(64)
+  deviceFingerprint String?          @map("device_fingerprint") @db.VarChar(64)
+  rememberMe        Boolean          @default(false) @map("remember_me")
+  expiresAt         DateTime         @map("expires_at") @db.Timestamptz(6)
+  refreshExpiresAt  DateTime         @map("refresh_expires_at") @db.Timestamptz(6)
+  ipAddress         String?          @map("ip_address") @db.Inet
+  userAgent         String?          @map("user_agent") @db.Text
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  lastActivity      DateTime         @default(now()) @map("last_activity") @db.Timestamptz(6)
+  revokedAt         DateTime?        @map("revoked_at") @db.Timestamptz(6)
+
+  // Relations
+  user              UserProfile      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@index([deviceFingerprint])
+  @@map("auth_sessions")
+}
+
+model AuthOtp {
+  id                Int              @id @default(autoincrement())
+  email             String           @db.VarChar(255)
+  code              String           @db.VarChar(6)
+  attempts          Int              @default(0)
+  verified          Boolean          @default(false)
+  expiresAt         DateTime         @map("expires_at") @db.Timestamptz(6)
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  @@index([email, code])
+  @@index([expiresAt])
+  @@map("auth_otp")
+}
+
+model AuthRateLimit {
+  id                Int              @id @default(autoincrement())
+  email             String           @db.VarChar(255)
+  attemptCount      Int              @default(1) @map("attempt_count")
+  windowStart       DateTime         @default(now()) @map("window_start") @db.Timestamptz(6)
+  blockedUntil      DateTime?        @map("blocked_until") @db.Timestamptz(6)
+
+  @@index([email])
+  @@index([blockedUntil])
+  @@map("auth_rate_limits")
+}
+
+model UserPermission {
+  id                Int              @id @default(autoincrement())
+  userId            Int              @map("user_id")
+  permission        String           @db.VarChar(100)
+  grantedBy         Int?             @map("granted_by")
+  grantedAt         DateTime         @default(now()) @map("granted_at") @db.Timestamptz(6)
+
+  // Relations
+  user              UserProfile      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  grantor           UserProfile?     @relation("PermissionGrantedBy", fields: [grantedBy], references: [id])
+
+  @@unique([userId, permission])
+  @@index([userId])
+  @@map("user_permissions")
+}
+
+model GroupDefinition {
+  id                Int              @id @default(autoincrement())
+  accountId         Int              @map("account_id")
+  name              String           @db.VarChar(255)
+  description       String?          @db.Text
+  createdBy         Int?             @map("created_by")
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  account           AuthAccount      @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  creator           UserProfile?     @relation(fields: [createdBy], references: [id])
+  deviceAssignments GroupDeviceAssignment[]
+
+  @@unique([accountId, name])
+  @@index([accountId])
+  @@map("group_definitions")
+}
+
+model GroupDeviceAssignment {
+  id                Int              @id @default(autoincrement())
+  groupId           Int              @map("group_id")
+  deviceId          Int              @map("device_id")
+  assignedBy        Int?             @map("assigned_by")
+  assignedAt        DateTime         @default(now()) @map("assigned_at") @db.Timestamptz(6)
+
+  // Relations
+  group             GroupDefinition  @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  device            Device           @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  assignor          UserProfile?     @relation("AssignedByUser", fields: [assignedBy], references: [id])
+
+  @@unique([groupId, deviceId])
+  @@index([groupId])
+  @@index([deviceId])
+  @@map("group_device_assignments")
+}
+
+model DeviceAccountAssignment {
+  id                Int              @id @default(autoincrement())
+  deviceId          Int              @map("device_id")
+  accountId         Int              @map("account_id")
+  assignedBy        Int              @map("assigned_by")
+  assignedAt        DateTime         @default(now()) @map("assigned_at") @db.Timestamptz(6)
+  unassignedBy      Int?             @map("unassigned_by")
+  unassignedAt      DateTime?        @map("unassigned_at") @db.Timestamptz(6)
+  isActive          Boolean          @default(true) @map("is_active")
+  notes             String?          @db.Text
+
+  // Relations
+  device            Device           @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  account           AuthAccount      @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  assignor          UserProfile      @relation("DeviceAssignedByUser", fields: [assignedBy], references: [id])
+  unassignor        UserProfile?     @relation("DeviceUnassignedByUser", fields: [unassignedBy], references: [id])
+
+  @@index([deviceId])
+  @@index([accountId])
+  @@index([isActive])
+  @@map("device_account_assignments")
+}
+
+model AuditLog {
+  id                BigInt           @id @default(autoincrement())
+  userId            Int?             @map("user_id")
+  accountId         Int?             @map("account_id")
+  action            String           @db.VarChar(100)
+  entityType        String           @map("entity_type") @db.VarChar(50)
+  entityId          Int?             @map("entity_id")
+  oldValues         Json?            @map("old_values")
+  newValues         Json?            @map("new_values")
+  ipAddress         String?          @map("ip_address") @db.Inet
+  userAgent         String?          @map("user_agent") @db.Text
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  // Relations
+  user              UserProfile?     @relation(fields: [userId], references: [id])
+  account           AuthAccount?     @relation(fields: [accountId], references: [id])
+
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+model AuditDeviceAccess {
+  id                BigInt           @id @default(autoincrement())
+  userId            Int              @map("user_id")
+  deviceId          Int              @map("device_id")
+  action            String           @db.VarChar(100)
+  commandType       String?          @map("command_type") @db.VarChar(50)
+  commandData       Json?            @map("command_data")
+  responseData      Json?            @map("response_data")
+  success           Boolean?
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  // Relations
+  user              UserProfile      @relation(fields: [userId], references: [id])
+  device            Device           @relation(fields: [deviceId], references: [id])
+
+  @@index([userId])
+  @@index([deviceId])
+  @@index([createdAt])
+  @@map("audit_device_access")
+}
+
+model DeviceInstallation {
+  id                Int              @id @default(autoincrement())
+  deviceId          Int              @unique @map("device_id")
+  installationDate  DateTime?        @map("installation_date") @db.Timestamptz(6)
+  technicianName    String?          @map("technician_name") @db.VarChar(255)
+  workOrder         String?          @map("work_order") @db.VarChar(100)
+  clientLocation    String?          @map("client_location") @db.Text
+  panelModel        String?          @map("panel_model") @db.VarChar(100)
+  configuredZones   String?          @map("configured_zones") @db.Text
+  connectedSensors  String?          @map("connected_sensors") @db.Text
+  connectionDiagram String?          @map("connection_diagram_url") @db.Text
+  lastMaintenance   DateTime?        @map("last_maintenance") @db.Timestamptz(6)
+  nextMaintenance   DateTime?        @map("next_maintenance") @db.Timestamptz(6)
+  maintenanceHistory Json?           @map("maintenance_history")
+  technicianNotes   String?          @map("technician_notes") @db.Text
+  warrantyExpiry    DateTime?        @map("warranty_expiry") @db.Date
+  installationStatus String?         @map("installation_status") @db.VarChar(50)
+  createdAt         DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  device            Device           @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@index([deviceId])
+  @@index([installationDate])
+  @@index([nextMaintenance])
+  @@map("device_installations")
+}

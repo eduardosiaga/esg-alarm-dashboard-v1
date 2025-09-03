@@ -1,0 +1,35 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\.2cf95434c798a172a4a1d4a067b32a3eea37ca9a-audit.json",
+    "files": [
+        {
+            "date": 1756480788630,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\postgres-mcp-development-2025-08-29.log",
+            "hash": "558b869518fffabc8a1176e340b0cb94d09e0eba767689d94c249bc5c6675bc2"
+        },
+        {
+            "date": 1756533769067,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\postgres-mcp-development-2025-08-30.log",
+            "hash": "a0bbd23ab7df3eea1ebc2dd20afb442fc6893b76f2a0ae0be58e2e34341eb26a"
+        },
+        {
+            "date": 1756620019955,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\postgres-mcp-development-2025-08-31.log",
+            "hash": "22b8ba84a669655630ba3f0d8297917d4658d3b4e1ab37dcbf544c531b7fac45"
+        },
+        {
+            "date": 1756706638281,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\postgres-mcp-development-2025-09-01.log",
+            "hash": "b9678679cf6c2b1baf6101bb2bbb1e06053a7d194afcdf70929642f0f2c477a7"
+        },
+        {
+            "date": 1756792878159,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\postgres-mcp-development-2025-09-02.log",
+            "hash": "51baaae7f12afa51e37df2d06cd51dfb449ad9c57c71adee03fd92b1a8c48def"
+        }
+    ],
+    "hashType": "sha256"
+}

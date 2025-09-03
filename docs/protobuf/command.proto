@@ -1,0 +1,237 @@
+syntax = "proto3";
+
+package esg.alarm;
+
+// Command types enumeration
+enum CommandType {
+    CMD_UNKNOWN = 0;
+    CMD_SYSTEM = 1;
+    CMD_CONFIG = 2;
+    CMD_OUTPUT = 3;
+    CMD_DIAGNOSTIC = 4;
+    CMD_OTA = 5;
+}
+
+// System commands
+message SystemCommand {
+    enum SystemAction {
+        SYS_UNKNOWN = 0;
+        SYS_REBOOT = 1;
+        SYS_FACTORY_RESET = 2;
+        SYS_GET_STATUS = 3;
+        SYS_SET_TIME = 4;
+        SYS_CLEAR_COUNTERS = 5;
+    }
+    SystemAction action = 1;
+    uint32 delay_seconds = 2;  // For reboot delay
+    uint32 unix_time = 3;      // For set_time
+}
+
+// Configuration commands
+message ConfigCommand {
+    enum ConfigType {
+        CFG_UNKNOWN = 0;
+        CFG_WIFI = 1;
+        CFG_MQTT = 2;
+        CFG_DEVICE = 3;
+        CFG_LOCATION = 4;
+        CFG_NTP = 5;
+        CFG_BLE = 6;
+    }
+    ConfigType type = 1;
+    
+    // Configuration payloads
+    oneof config {
+        WifiConfig wifi = 10;
+        MqttConfig mqtt = 11;
+        DeviceConfig device = 12;
+        LocationConfig location = 13;
+        NTPConfig ntp = 14;
+        BLEConfig ble = 15;
+    }
+}
+
+// WiFi configuration - ALL FIELDS OPTIONAL
+message WifiConfig {
+    optional string ssid = 1;
+    optional string password = 2;
+    optional bool dhcp = 3;
+    optional uint32 static_ip = 4;
+    optional uint32 gateway = 5;
+    optional uint32 netmask = 6;
+}
+
+// MQTT configuration - ALL FIELDS OPTIONAL
+message MqttConfig {
+    optional string broker_url = 1;
+    optional uint32 port = 2;
+    optional string username = 3;
+    optional string password = 4;
+    optional uint32 keepalive = 5;
+    optional uint32 qos = 6;
+    optional bool use_tls = 7;
+}
+
+// Device configuration - ALL FIELDS OPTIONAL
+message DeviceConfig {
+    optional string hostname = 1;
+    optional uint32 device_id = 2;
+    optional bool enable_heartbeat = 3;
+    optional uint32 heartbeat_interval = 4;
+}
+
+// Location configuration - ALL FIELDS OPTIONAL
+message LocationConfig {
+    optional string country = 1;
+    optional uint32 zone = 2;
+    optional float latitude = 3;
+    optional float longitude = 4;
+}
+
+// NTP configuration - ALL FIELDS OPTIONAL
+message NTPConfig {
+    optional string server1 = 1;
+    optional string server2 = 2;
+    optional string server3 = 3;
+    optional bool enable_sync = 4;
+    optional uint32 sync_interval = 5;    // Seconds (300-86400)
+    optional int32 timezone_offset = 6;   // Seconds from UTC
+    optional string timezone_name = 7;
+}
+
+// BLE configuration - ALL FIELDS OPTIONAL
+message BLEConfig {
+    optional bool enable = 1;
+    optional string device_name = 2;
+    optional bool advertise = 3;
+    optional uint32 interval_ms = 4;      // Advertising interval (20-10240ms)
+    optional bytes adv_hmac_key = 5;
+    optional bytes spp_hmac_key = 6;
+    optional uint32 tx_power = 7;         // TX power level (0-7)
+}
+
+// Output control commands
+message OutputCommand {
+    enum OutputType {
+        OUT_UNKNOWN = 0;
+        OUT_SIREN = 1;
+        OUT_TURRET = 2;
+        OUT_RELAY1 = 3;
+        OUT_RELAY2 = 4;
+        OUT_FAN = 5;             // Control PWM del ventilador
+        OUT_ALL = 6;              // Todas las salidas (excepto FAN)
+    }
+    
+    enum PatternType {
+        PATTERN_NONE = 0;         // No implementado/Sin patrón
+        PATTERN_CONSTANT = 1;     // Salida constante (ON/OFF)
+        PATTERN_PULSE = 2;        // Pulsos con control de on/off
+        PATTERN_BLINK_SLOW = 3;   // Parpadeo lento para relé (500ms ON, 500ms OFF)
+        PATTERN_BLINK_FAST = 4;   // Parpadeo rápido para relé (200ms ON, 200ms OFF)
+        PATTERN_DOUBLE_PULSE = 5; // Doble pulso con pausa
+        PATTERN_TRIPLE_PULSE = 6; // Triple pulso con pausa
+        PATTERN_SOS = 7;          // Patrón SOS
+        PATTERN_STROBE = 8;       // Estroboscópico para relé (50ms ON, 950ms OFF)
+        PATTERN_OFF = 9;          // Apagar salida (forzar OFF)
+        PATTERN_PWM = 10;         // Control PWM (solo para FAN)
+        PATTERN_CUSTOM = 255;     // Patrón personalizado
+    }
+    
+    OutputType output = 1;
+    PatternType pattern = 2;     // Tipo de patrón
+    
+    // Control básico
+    bool state = 3;               // Para PATTERN_CONSTANT: true=ON, false=OFF
+    uint32 total_duration = 4;   // Duración total en segundos (0 = permanente)
+    
+    // Control de pulsos (para PATTERN_PULSE)
+    uint32 pulse_count = 5;      // Número de pulsos (0 = infinito hasta total_duration)
+    uint32 on_duration_ms = 6;   // Duración ON en milisegundos
+    uint32 off_duration_ms = 7;  // Duración OFF en milisegundos
+    
+    // Control avanzado (opcional)
+    uint32 repeat_interval = 8;  // Intervalo entre repeticiones de patrón (segundos)
+    uint32 custom_data = 9;      // Datos personalizados para PATTERN_CUSTOM o ciclo PWM (0-100%) para FAN
+}
+
+// Diagnostic commands
+message DiagnosticCommand {
+    enum DiagAction {
+        DIAG_UNKNOWN = 0;
+        DIAG_SELF_TEST = 1;
+        DIAG_MEMORY_INFO = 2;
+        DIAG_NETWORK_INFO = 3;
+        DIAG_SENSOR_READ = 4;
+        DIAG_LOG_DUMP = 5;
+        DIAG_INOUT_READ = 6;      // Read I/O states and fan PWM
+    }
+    DiagAction action = 1;
+    uint32 test_mask = 2;    // For self-test selection
+    uint32 log_lines = 3;    // For log dump
+}
+
+// OTA commands
+message OTACommand {
+    enum OTAAction {
+        OTA_UNKNOWN = 0;
+        OTA_CHECK_UPDATE = 1;
+        OTA_START_UPDATE = 2;
+        OTA_VALIDATE = 3;
+        OTA_ROLLBACK = 4;
+        OTA_GET_STATUS = 5;
+    }
+    OTAAction action = 1;
+    string url = 2;
+    string md5 = 3;
+    uint32 size = 4;
+}
+
+// Configuration read commands
+message ConfigReadCommand {
+    enum ReadType {
+        READ_UNKNOWN = 0;
+        READ_WIFI = 1;
+        READ_MQTT = 2;
+        READ_DEVICE = 3;
+        READ_LOCATION = 4;
+        READ_NTP = 5;
+        READ_BLE = 6;
+        READ_ALL = 7;     // Read all configurations
+    }
+    ReadType type = 1;
+    bool include_sensitive = 2;  // Include passwords/keys (requires auth_level >= 2)
+}
+
+// Main command envelope
+message CommandEnvelope {
+    // Metadata
+    uint32 sequence = 1;                        // Anti-replay counter
+    uint32 timestamp = 2;                       // Unix timestamp
+    string request_id = 3; // UUID for correlation
+    
+    // Authentication
+    uint32 auth_level = 4;                      // 0=none, 1=basic, 2=admin
+    
+    // Command payload (oneof ensures only one command type)
+    oneof command {
+        SystemCommand system = 10;
+        ConfigCommand config = 11;
+        OutputCommand output = 12;
+        DiagnosticCommand diagnostic = 13;
+        OTACommand ota = 14;
+        ConfigReadCommand config_read = 15;
+    }
+}
+
+// Command response
+message CommandResponse {
+    string request_id = 1;  // Correlation with request
+    uint32 timestamp = 2;                            // Response timestamp
+    bool success = 3;                                // Command execution result
+    uint32 error_code = 4;                          // Error code if failed
+    string message = 5;   // Human readable message
+    bytes payload = 6;    // Response data if any
+}
+
+// HMAC protection is implemented at transport layer using generic wrapper
+// No need for SecureCommand message type

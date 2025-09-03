@@ -1,0 +1,87 @@
+syntax = "proto3";
+import "nanopb.proto";
+
+package esg.alarm;
+
+// Estado general del dispositivo
+enum DeviceState {
+    STATE_BOOT = 0;
+    STATE_INIT = 1;
+    STATE_CONNECTING = 2;
+    STATE_NORMAL = 3;
+    STATE_ALARM = 4;
+    STATE_MAINTENANCE = 5;
+    STATE_ERROR = 6;
+    STATE_CRITICAL = 7;
+}
+
+// Estado de interfaces de red
+enum NetworkInterface {
+    NETWORK_WIFI = 0;
+    NETWORK_ETHERNET = 1;
+    NETWORK_NONE = 2;
+}
+
+// Mensaje de status completo
+message StatusMessage {
+    // Metadata
+    uint32 sequence = 1;           // Número de secuencia del mensaje
+    uint32 timestamp = 2;          // Unix timestamp
+    uint32 device_db_id = 3;       // ID del dispositivo en DB
+    
+    // Estado general
+    DeviceState state = 4;         // Estado actual del dispositivo
+    uint32 state_duration = 5;     // Segundos en el estado actual
+    
+    // Información del sistema
+    uint32 uptime = 6;             // Uptime en segundos
+    uint32 boot_count = 7;         // Contador de reinicios
+    uint32 free_heap = 8;          // Memoria heap libre en bytes
+    uint32 min_heap = 9;           // Mínimo heap registrado
+    string firmware = 10 [(nanopb).max_size = 16];  // Versión firmware
+    
+    // Conectividad
+    NetworkInterface network = 11; // Interfaz activa (WiFi/Ethernet)
+    bool connected = 12;           // Conectado a red
+    bool has_ip = 13;              // Tiene IP asignada
+    int32 rssi = 14;               // RSSI (solo WiFi, 0 para Ethernet)
+    uint32 ip_address = 15;        // IP en formato uint32
+    bytes mac_address = 16 [(nanopb).max_size = 6]; // MAC address (6 bytes)
+    
+    // Estados de servicios
+    bool mqtt_connected = 17;      // MQTT conectado
+    bool ntp_synced = 18;          // NTP sincronizado
+    int64 last_ntp_sync = 19;      // Último sync NTP (Unix time)
+    
+    // Estados de alarmas
+    bool panic1 = 20;              // Estado panic1
+    bool panic2 = 21;              // Estado panic2
+    bool box_sw = 22;              // Estado tamper
+    bool siren = 23;               // Salida sirena
+    bool turret = 24;              // Salida torreta
+    
+    // Contadores de eventos
+    uint32 panic1_count = 25;      // Total activaciones panic1
+    uint32 panic2_count = 26;      // Total activaciones panic2
+    uint32 tamper_count = 27;      // Total eventos tamper
+    uint32 wifi_disconnects = 28;  // Desconexiones WiFi
+    uint32 mqtt_disconnects = 29;  // Desconexiones MQTT
+    
+    // Sensores ambientales
+    float temperature = 30;        // Temperatura en Celsius
+    float humidity = 31;           // Humedad %
+    
+    // Información de ubicación
+    string country = 32 [(nanopb).max_size = 3];  // Código país
+    uint32 zone = 33;              // Zona (1-255)
+    float latitude = 34;           // Latitud
+    float longitude = 35;          // Longitud
+    
+    // Flags de error (bitmap)
+    uint32 error_flags = 36;       // Bitmap de errores activos
+    uint32 error_count = 37;       // Total de errores desde boot
+    
+    // Información de partición OTA
+    uint32 partition = 38;         // 0=factory, 1=ota_0, 2=ota_1
+    bool ota_validated = 39;       // Firmware validado
+}

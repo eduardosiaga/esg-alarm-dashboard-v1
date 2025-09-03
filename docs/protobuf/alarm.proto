@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package esg.alarm;
+
+import "nanopb.proto";
+
+// ========== Mensaje Unificado de Alarma ==========
+message AlarmEvent {
+  // Metadatos del evento
+  uint32 sequence = 1;           // Secuencia anti-replay
+  uint32 timestamp = 2;          // Unix timestamp
+  uint32 device_db_id = 3;      // ID en base de datos
+  
+  // Tipo de evento de alarma
+  enum AlarmType {
+    ALARM_UNKNOWN = 0;
+    ALARM_PANIC1 = 1;          // Botón pánico 1
+    ALARM_PANIC2 = 2;          // Botón pánico 2  
+    ALARM_TAMPER = 3;          // Box switch (tamper)
+    ALARM_FIRE = 4;            // Reservado: sensor fuego
+    ALARM_INTRUSION = 5;       // Reservado: intrusión
+    ALARM_MEDICAL = 6;         // Reservado: emergencia médica
+    ALARM_DURESS = 7;          // Reservado: bajo coacción
+    
+    // Eventos de cambio de salida
+    OUTPUT_EVENT = 10;         // Evento genérico de salida
+  }
+  
+  AlarmType type = 4;           // Tipo de alarma
+  
+  // Estado del evento
+  enum EventState {
+    STATE_INACTIVE = 0;        // Normal/Apagado/Patrón terminado
+    STATE_ACTIVE = 1;          // Activo/Encendido/Patrón en ejecución
+    STATE_TEST = 2;            // Modo prueba
+    STATE_STARTING = 3;        // Patrón iniciando
+    STATE_STOPPING = 4;        // Patrón terminando
+  }
+  
+  EventState state = 5;         // Estado actual
+  
+  // Prioridad del evento
+  enum Priority {
+    PRIORITY_LOW = 0;
+    PRIORITY_MEDIUM = 1;
+    PRIORITY_HIGH = 2;
+    PRIORITY_CRITICAL = 3;
+  }
+  
+  Priority priority = 8;        // Nivel de prioridad
+  
+  // Estado físico del sensor (raw)
+  bool physical_state = 10;     // true=HIGH, false=LOW
+  
+  // Campos para eventos de salida (OUTPUT_EVENT)
+  uint32 output_type = 11;      // OutputType de command.proto (OUT_SIREN, OUT_TURRET, etc.)
+  uint32 pattern_type = 12;     // PatternType de command.proto (PATTERN_PULSE, etc.)
+  uint32 duration_seconds = 13; // Duración configurada (0=permanente)
+  uint32 elapsed_seconds = 14;  // Tiempo transcurrido cuando termina
+}

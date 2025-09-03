@@ -1,0 +1,3321 @@
+[DEVELOPMENT] [2025-08-29 09:19:48.633] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.700] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-29 09:19:48.700] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-29 09:19:48.700] [DEBUG] Starting database connection test...
+[DEVELOPMENT] [2025-08-29 09:19:48.700] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.701] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-29 09:19:48.701] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-29 09:19:48.705] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-29 09:19:48.712] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-29 09:19:48.712] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.713] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-29 09:19:48.713] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-29 09:19:48.713] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "select",
+      "operation": "READ",
+      "schema": "public",
+      "table": "pg_tables"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.723] [DEBUG] SQL Query | Data: {
+  "sql": "\n      SELECT\n        t.schemaname as schema,\n        t.tablename as name,\n        t.schemaname || '.' || t.tablename as full_name,\n        obj_description(c.oid, 'pg_class') as description,\n        pg_total_relation_size(c.oid) as total_size,\n        pg_table_size(c.oid) as table_size,\n        pg_indexes_size(c.oid) as indexes_size,\n        n_live_tup as row_count\n      FROM\n        pg_tables t\n        JOIN pg_class c ON c.relname = t.tablename\n        JOIN pg_namespace ns ON ns.oid = c.relnamespace AND ns.nspname = t.schemaname\n        LEFT JOIN pg_stat_user_tables s ON s.schemaname = t.schemaname AND s.relname = t.tablename\n      WHERE\n        t.schemaname NOT IN ('pg_catalog', 'information_schema')\n      ORDER BY\n        t.schemaname, t.tablename\n    ",
+  "database": "default",
+  "queryId": "1756480788722-0.1878644638787761"
+}
+[DEVELOPMENT] [2025-08-29T15:19:48.723Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.723] [DEBUG] Connection Event Duration | Data: {
+  "event": "connection successful",
+  "duration": "0ms"
+}
+[DEVELOPMENT] [2025-08-29T15:19:48.724Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.724] [DEBUG] Connection Event Duration | Data: {
+  "event": "connection successful",
+  "duration": "0ms"
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.726] [WARN] Could not parse tables result: | Data: {
+  "data": [
+    {}
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:19:48.726] [INFO] Found 0 tables
+[DEVELOPMENT] [2025-08-29 09:20:06.493] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.557] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-29 09:20:06.557] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-29 09:20:06.558] [DEBUG] Starting database connection test...
+[DEVELOPMENT] [2025-08-29 09:20:06.558] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.558] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-29 09:20:06.559] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-29 09:20:06.563] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-29 09:20:06.571] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-29 09:20:06.571] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.571] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-29 09:20:06.571] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-29 09:20:06.571] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "select",
+      "operation": "READ",
+      "schema": "public",
+      "table": "pg_tables"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.580] [DEBUG] SQL Query | Data: {
+  "sql": "\n      SELECT\n        t.schemaname as schema,\n        t.tablename as name,\n        t.schemaname || '.' || t.tablename as full_name,\n        obj_description(c.oid, 'pg_class') as description,\n        pg_total_relation_size(c.oid) as total_size,\n        pg_table_size(c.oid) as table_size,\n        pg_indexes_size(c.oid) as indexes_size,\n        n_live_tup as row_count\n      FROM\n        pg_tables t\n        JOIN pg_class c ON c.relname = t.tablename\n        JOIN pg_namespace ns ON ns.oid = c.relnamespace AND ns.nspname = t.schemaname\n        LEFT JOIN pg_stat_user_tables s ON s.schemaname = t.schemaname AND s.relname = t.tablename\n      WHERE\n        t.schemaname NOT IN ('pg_catalog', 'information_schema')\n      ORDER BY\n        t.schemaname, t.tablename\n    ",
+  "database": "default",
+  "queryId": "1756480806580-0.1986411477717449"
+}
+[DEVELOPMENT] [2025-08-29T15:20:06.580Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.580] [DEBUG] Connection Event Duration | Data: {
+  "event": "connection successful",
+  "duration": "0ms"
+}
+[DEVELOPMENT] [2025-08-29T15:20:06.581Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.581] [DEBUG] Connection Event Duration | Data: {
+  "event": "connection successful",
+  "duration": "0ms"
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.583] [WARN] Could not parse tables result: | Data: {
+  "data": [
+    {}
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:20:06.583] [INFO] Found 0 tables
+[DEVELOPMENT] [2025-08-29 09:25:06.507] [INFO] Performance Summary | Data: {
+  "uptime": "5 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.19 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:25:06.507] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.15 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "12.82 MB",
+  "external": "2.22 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 09:30:06.508] [INFO] Performance Summary | Data: {
+  "uptime": "10 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:30:06.508] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.19 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "12.86 MB",
+  "external": "2.22 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 09:32:00.294] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:32:00.295] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "select",
+      "operation": "READ"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:32:00.303] [DEBUG] SQL Query | Data: {
+  "sql": "SELECT version();",
+  "database": "default",
+  "queryId": "1756481520303-0.6247320350487018"
+}
+[DEVELOPMENT] [2025-08-29 09:32:05.424] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:32:05.424] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "select",
+      "operation": "READ",
+      "schema": "information_schema",
+      "table": "tables"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 09:32:05.425] [DEBUG] SQL Query | Data: {
+  "sql": "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';",
+  "database": "default",
+  "queryId": "1756481525425-0.41874417943257947"
+}
+[DEVELOPMENT] [2025-08-29 09:35:06.508] [INFO] Performance Summary | Data: {
+  "uptime": "15 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:35:06.509] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.61 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.31 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 09:40:06.510] [INFO] Performance Summary | Data: {
+  "uptime": "20 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:40:06.510] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.62 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.34 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 09:45:06.512] [INFO] Performance Summary | Data: {
+  "uptime": "25 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:45:06.512] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.65 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.37 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 09:50:06.514] [INFO] Performance Summary | Data: {
+  "uptime": "30 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:50:06.514] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.68 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.40 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 09:55:06.530] [INFO] Performance Summary | Data: {
+  "uptime": "35 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 09:55:06.530] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.71 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.42 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:00:06.542] [INFO] Performance Summary | Data: {
+  "uptime": "40 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:00:06.542] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.73 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.45 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:05:06.547] [INFO] Performance Summary | Data: {
+  "uptime": "45 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:05:06.547] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.76 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.48 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:10:06.549] [INFO] Performance Summary | Data: {
+  "uptime": "50 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:10:06.549] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.79 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.52 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:15:06.565] [INFO] Performance Summary | Data: {
+  "uptime": "55 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:15:06.565] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.82 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.55 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:20:06.575] [INFO] Performance Summary | Data: {
+  "uptime": "60 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:20:06.575] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.85 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.58 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:25:06.585] [INFO] Performance Summary | Data: {
+  "uptime": "65 minutes",
+  "cpuUser": "0.17 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:25:06.585] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.88 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.60 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:30:06.586] [INFO] Performance Summary | Data: {
+  "uptime": "70 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:30:06.586] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.91 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.63 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:35:06.586] [INFO] Performance Summary | Data: {
+  "uptime": "75 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:35:06.586] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.02 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "12.91 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:40:06.592] [INFO] Performance Summary | Data: {
+  "uptime": "80 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:40:06.592] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.04 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "12.94 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:45:06.602] [INFO] Performance Summary | Data: {
+  "uptime": "85 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:45:06.602] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.13 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "12.97 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:50:06.616] [INFO] Performance Summary | Data: {
+  "uptime": "90 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:50:06.616] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.13 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "13.00 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 10:55:06.630] [INFO] Performance Summary | Data: {
+  "uptime": "95 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 10:55:06.630] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.13 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "13.03 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:00:06.644] [INFO] Performance Summary | Data: {
+  "uptime": "100 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:00:06.644] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.19 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "13.06 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:05:06.649] [INFO] Performance Summary | Data: {
+  "uptime": "105 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:05:06.649] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.19 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "13.08 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:10:06.658] [INFO] Performance Summary | Data: {
+  "uptime": "110 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:10:06.658] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.21 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "13.11 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:15:06.661] [INFO] Performance Summary | Data: {
+  "uptime": "115 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:15:06.661] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.24 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "13.14 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:20:06.676] [INFO] Performance Summary | Data: {
+  "uptime": "120 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.20 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:20:06.676] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.31 MB",
+  "heapTotal": "16.39 MB",
+  "heapUsed": "13.17 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.502] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.567] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-29 11:26:36.567] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-29 11:26:36.567] [DEBUG] Starting database connection test...
+[DEVELOPMENT] [2025-08-29 11:26:36.568] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.568] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-29 11:26:36.568] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-29 11:26:36.572] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-29 11:26:36.580] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-29 11:26:36.580] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.581] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-29 11:26:36.581] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-29 11:26:36.581] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "select",
+      "operation": "READ",
+      "schema": "public",
+      "table": "pg_tables"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29T17:26:36.589Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.589] [DEBUG] Connection Event Duration | Data: {
+  "event": "connection successful",
+  "duration": "0ms"
+}
+[DEVELOPMENT] [2025-08-29T17:26:36.590Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.590] [DEBUG] Connection Event Duration | Data: {
+  "event": "connection successful",
+  "duration": "0ms"
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.591] [DEBUG] SQL Query | Data: {
+  "sql": "\n      SELECT\n        t.schemaname as schema,\n        t.tablename as name,\n        t.schemaname || '.' || t.tablename as full_name,\n        obj_description(c.oid, 'pg_class') as description,\n        pg_total_relation_size(c.oid) as total_size,\n        pg_table_size(c.oid) as table_size,\n        pg_indexes_size(c.oid) as indexes_size,\n        n_live_tup as row_count\n      FROM\n        pg_tables t\n        JOIN pg_class c ON c.relname = t.tablename\n        JOIN pg_namespace ns ON ns.oid = c.relnamespace AND ns.nspname = t.schemaname\n        LEFT JOIN pg_stat_user_tables s ON s.schemaname = t.schemaname AND s.relname = t.tablename\n      WHERE\n        t.schemaname NOT IN ('pg_catalog', 'information_schema')\n      ORDER BY\n        t.schemaname, t.tablename\n    ",
+  "database": "default",
+  "queryId": "1756488396591-0.025718600778549705"
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.594] [WARN] Could not parse tables result: | Data: {
+  "data": [
+    {}
+  ]
+}
+[DEVELOPMENT] [2025-08-29 11:26:36.594] [INFO] Found 0 tables
+[DEVELOPMENT] [2025-08-29 11:31:36.508] [INFO] Performance Summary | Data: {
+  "uptime": "5 minutes",
+  "cpuUser": "0.23 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:31:36.508] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.04 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.82 MB",
+  "external": "2.22 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:36:36.508] [INFO] Performance Summary | Data: {
+  "uptime": "10 minutes",
+  "cpuUser": "0.23 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:36:36.508] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.08 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.87 MB",
+  "external": "2.22 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:41:36.514] [INFO] Performance Summary | Data: {
+  "uptime": "15 minutes",
+  "cpuUser": "0.23 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:41:36.514] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.08 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.90 MB",
+  "external": "2.22 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:46:36.522] [INFO] Performance Summary | Data: {
+  "uptime": "20 minutes",
+  "cpuUser": "0.23 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:46:36.523] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.11 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.93 MB",
+  "external": "2.22 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:51:36.536] [INFO] Performance Summary | Data: {
+  "uptime": "25 minutes",
+  "cpuUser": "0.25 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:51:36.536] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.15 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.97 MB",
+  "external": "2.22 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 11:56:36.539] [INFO] Performance Summary | Data: {
+  "uptime": "30 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 11:56:36.539] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.18 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.00 MB",
+  "external": "2.22 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:01:36.541] [INFO] Performance Summary | Data: {
+  "uptime": "35 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:01:36.541] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.20 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.02 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:06:36.542] [INFO] Performance Summary | Data: {
+  "uptime": "40 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:06:36.542] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.23 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.05 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:11:36.544] [INFO] Performance Summary | Data: {
+  "uptime": "45 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:11:36.544] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.26 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.08 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:16:36.560] [INFO] Performance Summary | Data: {
+  "uptime": "50 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:16:36.561] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.29 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.12 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:21:36.569] [INFO] Performance Summary | Data: {
+  "uptime": "55 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:21:36.569] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.32 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.15 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:26:36.579] [INFO] Performance Summary | Data: {
+  "uptime": "60 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:26:36.579] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.39 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.17 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:31:36.585] [INFO] Performance Summary | Data: {
+  "uptime": "65 minutes",
+  "cpuUser": "0.27 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:31:36.585] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.39 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.20 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:36:36.595] [INFO] Performance Summary | Data: {
+  "uptime": "70 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:36:36.595] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.45 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.23 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:41:36.605] [INFO] Performance Summary | Data: {
+  "uptime": "75 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:41:36.606] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.45 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.26 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:46:36.620] [INFO] Performance Summary | Data: {
+  "uptime": "80 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:46:36.620] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.46 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.29 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:51:36.625] [INFO] Performance Summary | Data: {
+  "uptime": "85 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:51:36.625] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.49 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.32 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 12:56:36.633] [INFO] Performance Summary | Data: {
+  "uptime": "90 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 12:56:36.633] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.57 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.35 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:01:36.644] [INFO] Performance Summary | Data: {
+  "uptime": "95 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:01:36.644] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.57 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.37 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:06:36.651] [INFO] Performance Summary | Data: {
+  "uptime": "100 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:06:36.651] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.63 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.40 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:11:36.661] [INFO] Performance Summary | Data: {
+  "uptime": "105 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:11:36.661] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.63 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.43 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:16:36.669] [INFO] Performance Summary | Data: {
+  "uptime": "110 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:16:36.669] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.69 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.46 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:21:36.679] [INFO] Performance Summary | Data: {
+  "uptime": "115 minutes",
+  "cpuUser": "0.28 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:21:36.679] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.69 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.49 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:26:36.690] [INFO] Performance Summary | Data: {
+  "uptime": "120 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:26:36.690] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.69 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.52 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:31:36.697] [INFO] Performance Summary | Data: {
+  "uptime": "125 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:31:36.697] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.72 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.55 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:36:36.709] [INFO] Performance Summary | Data: {
+  "uptime": "130 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:36:36.710] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.75 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.57 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:41:36.718] [INFO] Performance Summary | Data: {
+  "uptime": "135 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:41:36.718] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.82 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "12.81 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:46:36.731] [INFO] Performance Summary | Data: {
+  "uptime": "140 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:46:36.731] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.84 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "12.84 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:51:36.735] [INFO] Performance Summary | Data: {
+  "uptime": "145 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:51:36.735] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.91 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "12.87 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 13:56:36.737] [INFO] Performance Summary | Data: {
+  "uptime": "150 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 13:56:36.737] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.91 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "12.90 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:01:36.746] [INFO] Performance Summary | Data: {
+  "uptime": "155 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:01:36.746] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.97 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "12.93 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:06:36.747] [INFO] Performance Summary | Data: {
+  "uptime": "160 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:06:36.747] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "59.97 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "12.96 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:11:36.757] [INFO] Performance Summary | Data: {
+  "uptime": "165 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:11:36.757] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.03 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "12.98 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:16:36.757] [INFO] Performance Summary | Data: {
+  "uptime": "170 minutes",
+  "cpuUser": "0.33 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:16:36.757] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.03 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.01 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:21:36.767] [INFO] Performance Summary | Data: {
+  "uptime": "175 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:21:36.767] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.04 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.04 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:26:36.780] [INFO] Performance Summary | Data: {
+  "uptime": "180 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:26:36.780] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.07 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.07 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:31:36.791] [INFO] Performance Summary | Data: {
+  "uptime": "185 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:31:36.791] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.15 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.10 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:36:36.794] [INFO] Performance Summary | Data: {
+  "uptime": "190 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:36:36.794] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.15 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.13 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:41:36.801] [INFO] Performance Summary | Data: {
+  "uptime": "195 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:41:36.801] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.21 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.16 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:46:36.801] [INFO] Performance Summary | Data: {
+  "uptime": "200 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:46:36.802] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.21 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.18 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:51:36.815] [INFO] Performance Summary | Data: {
+  "uptime": "205 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:51:36.815] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.21 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.21 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 14:56:36.822] [INFO] Performance Summary | Data: {
+  "uptime": "210 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 14:56:36.822] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.27 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.24 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:01:36.832] [INFO] Performance Summary | Data: {
+  "uptime": "215 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:01:36.832] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.27 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.27 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:06:36.837] [INFO] Performance Summary | Data: {
+  "uptime": "220 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:06:36.837] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.29 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.30 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:11:36.845] [INFO] Performance Summary | Data: {
+  "uptime": "225 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:11:36.845] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.32 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.33 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:16:36.850] [INFO] Performance Summary | Data: {
+  "uptime": "230 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:16:36.850] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.39 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.36 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:21:36.860] [INFO] Performance Summary | Data: {
+  "uptime": "235 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:21:36.860] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.39 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.38 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:26:36.874] [INFO] Performance Summary | Data: {
+  "uptime": "240 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:26:36.874] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "60.41 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.41 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:31:36.880] [INFO] Performance Summary | Data: {
+  "uptime": "245 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:31:36.880] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.17 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.44 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:36:36.883] [INFO] Performance Summary | Data: {
+  "uptime": "250 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:36:36.883] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.25 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.47 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:41:36.883] [INFO] Performance Summary | Data: {
+  "uptime": "255 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:41:36.883] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.25 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.50 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:46:36.900] [INFO] Performance Summary | Data: {
+  "uptime": "260 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:46:36.900] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.25 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.53 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:51:36.903] [INFO] Performance Summary | Data: {
+  "uptime": "265 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:51:36.903] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.28 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.56 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 15:56:36.904] [INFO] Performance Summary | Data: {
+  "uptime": "270 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 15:56:36.904] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.31 MB",
+  "heapTotal": "16.14 MB",
+  "heapUsed": "13.58 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:01:36.906] [INFO] Performance Summary | Data: {
+  "uptime": "275 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:01:36.906] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.50 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.84 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:06:36.916] [INFO] Performance Summary | Data: {
+  "uptime": "280 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:06:36.916] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.50 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.87 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:11:36.925] [INFO] Performance Summary | Data: {
+  "uptime": "285 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:11:36.925] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.53 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.90 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:16:36.925] [INFO] Performance Summary | Data: {
+  "uptime": "290 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:16:36.925] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.55 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.93 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:21:36.927] [INFO] Performance Summary | Data: {
+  "uptime": "295 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:21:36.927] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.56 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.96 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:26:36.927] [INFO] Performance Summary | Data: {
+  "uptime": "300 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:26:36.928] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.99 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:31:36.941] [INFO] Performance Summary | Data: {
+  "uptime": "305 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:31:36.941] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.02 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:36:36.945] [INFO] Performance Summary | Data: {
+  "uptime": "310 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:36:36.945] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.04 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:41:36.945] [INFO] Performance Summary | Data: {
+  "uptime": "315 minutes",
+  "cpuUser": "0.38 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:41:36.945] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.07 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:46:36.952] [INFO] Performance Summary | Data: {
+  "uptime": "320 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:46:36.952] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.10 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:51:36.966] [INFO] Performance Summary | Data: {
+  "uptime": "325 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:51:36.967] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.13 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 16:56:36.980] [INFO] Performance Summary | Data: {
+  "uptime": "330 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 16:56:36.980] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.16 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:01:36.985] [INFO] Performance Summary | Data: {
+  "uptime": "335 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:01:36.985] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.19 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:06:36.991] [INFO] Performance Summary | Data: {
+  "uptime": "340 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:06:36.991] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "42.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.22 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:11:37.003] [INFO] Performance Summary | Data: {
+  "uptime": "345 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:11:37.004] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.18 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.25 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:16:37.014] [INFO] Performance Summary | Data: {
+  "uptime": "350 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:16:37.014] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.18 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.28 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:21:37.022] [INFO] Performance Summary | Data: {
+  "uptime": "355 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:21:37.023] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.18 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.30 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:26:37.023] [INFO] Performance Summary | Data: {
+  "uptime": "360 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:26:37.024] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.18 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.33 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:31:37.027] [INFO] Performance Summary | Data: {
+  "uptime": "365 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:31:37.027] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.18 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.36 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:36:37.036] [INFO] Performance Summary | Data: {
+  "uptime": "370 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:36:37.037] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.18 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.39 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:41:37.040] [INFO] Performance Summary | Data: {
+  "uptime": "375 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:41:37.040] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.18 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.42 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:46:37.051] [INFO] Performance Summary | Data: {
+  "uptime": "380 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:46:37.051] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.24 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.45 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:51:37.050] [INFO] Performance Summary | Data: {
+  "uptime": "385 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:51:37.050] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.38 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.48 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 17:56:37.064] [INFO] Performance Summary | Data: {
+  "uptime": "390 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 17:56:37.064] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.38 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.50 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:01:37.073] [INFO] Performance Summary | Data: {
+  "uptime": "395 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:01:37.073] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.41 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.53 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:06:37.079] [INFO] Performance Summary | Data: {
+  "uptime": "400 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:06:37.079] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.50 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.56 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:11:37.082] [INFO] Performance Summary | Data: {
+  "uptime": "405 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:11:37.082] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.51 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.59 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:16:37.093] [INFO] Performance Summary | Data: {
+  "uptime": "410 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:16:37.093] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.57 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.85 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:21:37.106] [INFO] Performance Summary | Data: {
+  "uptime": "415 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:21:37.106] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.57 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.88 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:26:37.114] [INFO] Performance Summary | Data: {
+  "uptime": "420 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:26:37.114] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.60 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.91 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:31:37.114] [INFO] Performance Summary | Data: {
+  "uptime": "425 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:31:37.114] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.68 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.93 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:36:37.128] [INFO] Performance Summary | Data: {
+  "uptime": "430 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:36:37.128] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.68 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.96 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:41:37.132] [INFO] Performance Summary | Data: {
+  "uptime": "435 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:41:37.132] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.99 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:46:37.144] [INFO] Performance Summary | Data: {
+  "uptime": "440 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:46:37.144] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.02 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:51:37.156] [INFO] Performance Summary | Data: {
+  "uptime": "445 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:51:37.156] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.05 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 18:56:37.155] [INFO] Performance Summary | Data: {
+  "uptime": "450 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 18:56:37.155] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.08 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:01:37.165] [INFO] Performance Summary | Data: {
+  "uptime": "455 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:01:37.165] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.10 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:06:37.179] [INFO] Performance Summary | Data: {
+  "uptime": "460 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:06:37.179] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.13 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:11:37.187] [INFO] Performance Summary | Data: {
+  "uptime": "465 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:11:37.187] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.16 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:16:37.203] [INFO] Performance Summary | Data: {
+  "uptime": "470 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:16:37.203] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.19 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:21:37.203] [INFO] Performance Summary | Data: {
+  "uptime": "475 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:21:37.203] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.22 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:26:37.218] [INFO] Performance Summary | Data: {
+  "uptime": "480 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:26:37.218] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.25 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:31:37.227] [INFO] Performance Summary | Data: {
+  "uptime": "485 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:31:37.227] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.28 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:36:37.239] [INFO] Performance Summary | Data: {
+  "uptime": "490 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:36:37.239] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.30 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:41:37.254] [INFO] Performance Summary | Data: {
+  "uptime": "495 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:41:37.254] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.33 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:46:37.256] [INFO] Performance Summary | Data: {
+  "uptime": "500 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:46:37.257] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.36 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:51:37.261] [INFO] Performance Summary | Data: {
+  "uptime": "505 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:51:37.261] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.39 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 19:56:37.273] [INFO] Performance Summary | Data: {
+  "uptime": "510 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 19:56:37.273] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.42 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:01:37.277] [INFO] Performance Summary | Data: {
+  "uptime": "515 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:01:37.277] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.45 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:06:37.286] [INFO] Performance Summary | Data: {
+  "uptime": "520 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:06:37.286] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.74 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.48 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:11:37.297] [INFO] Performance Summary | Data: {
+  "uptime": "525 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:11:37.297] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.75 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.51 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:16:37.307] [INFO] Performance Summary | Data: {
+  "uptime": "530 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:16:37.307] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.75 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.54 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:21:37.310] [INFO] Performance Summary | Data: {
+  "uptime": "535 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:21:37.310] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.75 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.56 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:26:37.321] [INFO] Performance Summary | Data: {
+  "uptime": "540 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:26:37.321] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.75 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.59 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:31:37.331] [INFO] Performance Summary | Data: {
+  "uptime": "545 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:31:37.332] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.79 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.85 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:36:37.345] [INFO] Performance Summary | Data: {
+  "uptime": "550 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:36:37.345] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.80 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.88 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:41:37.352] [INFO] Performance Summary | Data: {
+  "uptime": "555 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:41:37.353] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "43.82 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.91 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:46:37.354] [INFO] Performance Summary | Data: {
+  "uptime": "560 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:46:37.354] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.00 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.94 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:51:37.368] [INFO] Performance Summary | Data: {
+  "uptime": "565 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:51:37.368] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.00 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.97 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 20:56:37.376] [INFO] Performance Summary | Data: {
+  "uptime": "570 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 20:56:37.376] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.06 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "12.99 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:01:37.385] [INFO] Performance Summary | Data: {
+  "uptime": "575 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:01:37.385] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.06 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.02 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:06:37.386] [INFO] Performance Summary | Data: {
+  "uptime": "580 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:06:37.386] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.06 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.05 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:11:37.396] [INFO] Performance Summary | Data: {
+  "uptime": "585 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:11:37.396] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.06 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.08 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:16:37.411] [INFO] Performance Summary | Data: {
+  "uptime": "590 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:16:37.411] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.06 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.10 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:21:37.414] [INFO] Performance Summary | Data: {
+  "uptime": "595 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:21:37.415] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.06 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.13 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:26:37.417] [INFO] Performance Summary | Data: {
+  "uptime": "600 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:26:37.417] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.06 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.16 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:31:37.432] [INFO] Performance Summary | Data: {
+  "uptime": "605 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:31:37.432] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "44.06 MB",
+  "heapTotal": "15.14 MB",
+  "heapUsed": "13.19 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:32:09.667] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:09.667] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "devices"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:09.684] [DEBUG] SQL Query | Data: {
+  "sql": "-- Crear tabla devices (información estática)\nCREATE TABLE devices (\n  -- Identificación\n  id SERIAL PRIMARY KEY,                    -- device_db_id para el ESP32\n  mac_address MACADDR UNIQUE NOT NULL,      -- Identificador único permanente\n  hostname VARCHAR(32),                     -- ESG_ALARM_XXXXXX (del topic)\n  \n  -- Ubicación física (no cambia)\n  country VARCHAR(3),                       -- Código país\n  zone INTEGER,                             -- Zona asignada\n  latitude NUMERIC(10,7),                   -- Coordenada GPS\n  longitude NUMERIC(10,7),                  -- Coordenada GPS\n  location_desc TEXT,                       -- Descripción legible: \"Edificio A, Piso 3\"\n  \n  -- Información administrativa\n  installation_date TIMESTAMPTZ,            -- Cuándo se instaló físicamente\n  notes TEXT,                               -- Notas del administrador\n  active BOOLEAN DEFAULT true,              -- Si el dispositivo está activo\n  \n  -- Metadata\n  created_at TIMESTAMPTZ DEFAULT NOW(),     -- Primera vez que se vio\n  updated_at TIMESTAMPTZ DEFAULT NOW()      -- Última modificación de estos datos\n);",
+  "database": "esag-alarm-db",
+  "queryId": "1756524729684-0.8344094702113458"
+}
+[DEVELOPMENT] [2025-08-29 21:32:15.098] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:15.099] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:15.099] [DEBUG] SQL Query | Data: {
+  "sql": "-- Crear índices para la tabla devices\nCREATE INDEX idx_devices_mac ON devices(mac_address);\nCREATE INDEX idx_devices_zone ON devices(zone);\nCREATE INDEX idx_devices_active ON devices(active);",
+  "database": "esag-alarm-db",
+  "queryId": "1756524735099-0.7652009804350752"
+}
+[DEVELOPMENT] [2025-08-29 21:32:36.047] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:36.048] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "device_status"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:36.048] [DEBUG] SQL Query | Data: {
+  "sql": "-- Crear tabla device_status (información dinámica)\nCREATE TABLE device_status (\n  device_id INTEGER PRIMARY KEY REFERENCES devices(id) ON DELETE CASCADE,\n  \n  -- Estado de conexión\n  is_online BOOLEAN DEFAULT false,\n  last_seen TIMESTAMPTZ,                    -- Último mensaje recibido\n  \n  -- Información del sistema (actualizada con cada status)\n  firmware_version VARCHAR(16),             -- Versión actual\n  partition INTEGER,                        -- 0=factory, 1=ota_0, 2=ota_1\n  ota_validated BOOLEAN,                    -- Firmware validado\n  uptime INTEGER,                           -- Segundos desde último boot\n  boot_count INTEGER DEFAULT 0,             -- Total de reinicios\n  \n  -- Estado del dispositivo\n  device_state VARCHAR(20),                 -- BOOT, INIT, NORMAL, ALARM, ERROR, etc\n  state_duration INTEGER,                   -- Segundos en estado actual\n  \n  -- Memoria\n  free_heap INTEGER,                        -- Bytes libres\n  min_heap INTEGER,                         -- Mínimo histórico de heap\n  \n  -- Red\n  network_type VARCHAR(10),                 -- wifi, ethernet\n  ip_address INET,                          -- IP actual\n  rssi INTEGER,                             -- Señal WiFi (-100 a 0)\n  connected BOOLEAN,                        -- Conectado a red\n  has_ip BOOLEAN,                           -- Tiene IP asignada\n  \n  -- Servicios\n  mqtt_connected BOOLEAN,                   -- MQTT activo\n  ntp_synced BOOLEAN,                       -- NTP sincronizado\n  last_ntp_sync TIMESTAMPTZ,                -- Última sincronización NTP\n  \n  -- Estados I/O actuales\n  panic1 BOOLEAN DEFAULT false,\n  panic2 BOOLEAN DEFAULT false,\n  box_sw BOOLEAN DEFAULT false,             -- Tamper\n  siren BOOLEAN DEFAULT false,\n  turret BOOLEAN DEFAULT false,\n  \n  -- Contadores acumulados\n  panic1_count INTEGER DEFAULT 0,\n  panic2_count INTEGER DEFAULT 0,\n  tamper_count INTEGER DEFAULT 0,\n  wifi_disconnects INTEGER DEFAULT 0,\n  mqtt_disconnects INTEGER DEFAULT 0,\n  error_count INTEGER DEFAULT 0,\n  \n  -- Sensores ambientales\n  temperature REAL,                         -- Celsius\n  humidity REAL,                            -- Porcentaje\n  \n  -- Errores\n  error_flags INTEGER DEFAULT 0,            -- Bitmap de errores\n  \n  -- Sincronización\n  device_synced BOOLEAN DEFAULT false,      -- Si device_db_id está sincronizado\n  last_sync_attempt TIMESTAMPTZ,            -- Último intento de sincronización\n  \n  -- Timestamps\n  updated_at TIMESTAMPTZ DEFAULT NOW()      -- Última actualización\n);",
+  "database": "esag-alarm-db",
+  "queryId": "1756524756048-0.6666192695709705"
+}
+[DEVELOPMENT] [2025-08-29 21:32:42.956] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:42.956] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:42.957] [DEBUG] SQL Query | Data: {
+  "sql": "-- Crear índices para la tabla device_status\nCREATE INDEX idx_status_online ON device_status(is_online);\nCREATE INDEX idx_status_state ON device_status(device_state);\nCREATE INDEX idx_status_alarm ON device_status(panic1, panic2, box_sw);\nCREATE INDEX idx_status_last_seen ON device_status(last_seen DESC);",
+  "database": "esag-alarm-db",
+  "queryId": "1756524762957-0.7142655698582303"
+}
+[DEVELOPMENT] [2025-08-29 21:32:50.944] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:50.944] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "ON"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:50.945] [DEBUG] SQL Query | Data: {
+  "sql": "-- Crear trigger para actualizar updated_at automáticamente\nCREATE OR REPLACE FUNCTION update_updated_at_column()\nRETURNS TRIGGER AS $$\nBEGIN\n    NEW.updated_at = NOW();\n    RETURN NEW;\nEND;\n$$ language 'plpgsql';\n\n-- Aplicar trigger a la tabla devices\nCREATE TRIGGER update_devices_updated_at BEFORE UPDATE ON devices\n    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();\n\n-- Aplicar trigger a la tabla device_status\nCREATE TRIGGER update_device_status_updated_at BEFORE UPDATE ON device_status\n    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();",
+  "database": "esag-alarm-db",
+  "queryId": "1756524770945-0.6048595340208311"
+}
+[DEVELOPMENT] [2025-08-29 21:32:57.397] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:57.398] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "information_schema",
+      "table": "columns"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:32:57.398] [DEBUG] SQL Query | Data: {
+  "sql": "-- Verificar las tablas creadas\nSELECT \n    table_name,\n    column_name,\n    data_type,\n    is_nullable,\n    column_default\nFROM information_schema.columns\nWHERE table_schema = 'public' \n    AND table_name IN ('devices', 'device_status')\nORDER BY table_name, ordinal_position;",
+  "database": "esag-alarm-db",
+  "queryId": "1756524777398-0.2045463437083912"
+}
+[DEVELOPMENT] [2025-08-29 21:33:06.212] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:33:06.212] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "pg_indexes"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:33:06.212] [DEBUG] SQL Query | Data: {
+  "sql": "-- Verificar índices creados\nSELECT \n    schemaname,\n    tablename,\n    indexname,\n    indexdef\nFROM pg_indexes\nWHERE schemaname = 'public' \n    AND tablename IN ('devices', 'device_status')\nORDER BY tablename, indexname;",
+  "database": "esag-alarm-db",
+  "queryId": "1756524786212-0.000540457036614983"
+}
+[DEVELOPMENT] [2025-08-29 21:33:16.975] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:33:16.975] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "information_schema",
+      "table": "table_constraints"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:33:16.975] [DEBUG] SQL Query | Data: {
+  "sql": "-- Verificar las foreign keys\nSELECT \n    tc.table_name,\n    kcu.column_name,\n    ccu.table_name AS foreign_table_name,\n    ccu.column_name AS foreign_column_name,\n    rc.delete_rule\nFROM information_schema.table_constraints AS tc\n    JOIN information_schema.key_column_usage AS kcu\n        ON tc.constraint_name = kcu.constraint_name\n        AND tc.table_schema = kcu.table_schema\n    JOIN information_schema.constraint_column_usage AS ccu\n        ON ccu.constraint_name = tc.constraint_name\n        AND ccu.table_schema = tc.table_schema\n    JOIN information_schema.referential_constraints AS rc\n        ON rc.constraint_name = tc.constraint_name\nWHERE tc.constraint_type = 'FOREIGN KEY' \n    AND tc.table_name IN ('devices', 'device_status');",
+  "database": "esag-alarm-db",
+  "queryId": "1756524796975-0.7180194275829899"
+}
+[DEVELOPMENT] [2025-08-29 21:35:02.377] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:02.377] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "device_status"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:02.388] [DEBUG] SQL Query | Data: {
+  "sql": "-- Agregar campo fan_pwm_duty a device_status\nALTER TABLE device_status \nADD COLUMN fan_pwm_duty SMALLINT CHECK (fan_pwm_duty >= 0 AND fan_pwm_duty <= 100);\n\n-- Agregar comentario para claridad\nCOMMENT ON COLUMN device_status.fan_pwm_duty IS 'Fan PWM duty cycle (0-100%)';",
+  "database": "esag-alarm-db",
+  "queryId": "1756524902388-0.9516343196980941"
+}
+[DEVELOPMENT] [2025-08-29 21:35:15.146] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:15.146] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "information_schema",
+      "table": "columns"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:15.146] [DEBUG] SQL Query | Data: {
+  "sql": "-- Verificar el nuevo campo\nSELECT \n    column_name,\n    data_type,\n    is_nullable,\n    column_default,\n    check_constraints.constraint_name,\n    check_constraints.check_clause\nFROM information_schema.columns\nLEFT JOIN (\n    SELECT \n        tc.table_name,\n        col.column_name,\n        tc.constraint_name,\n        cc.check_clause\n    FROM information_schema.table_constraints tc\n    JOIN information_schema.check_constraints cc \n        ON tc.constraint_name = cc.constraint_name\n    JOIN information_schema.constraint_column_usage col\n        ON col.constraint_name = tc.constraint_name\n    WHERE tc.constraint_type = 'CHECK'\n) AS check_constraints \n    ON columns.table_name = check_constraints.table_name \n    AND columns.column_name = check_constraints.column_name\nWHERE columns.table_schema = 'public' \n    AND columns.table_name = 'device_status'\n    AND columns.column_name = 'fan_pwm_duty';",
+  "database": "esag-alarm-db",
+  "queryId": "1756524915146-0.26752793798145236"
+}
+[DEVELOPMENT] [2025-08-29 21:35:15.150] [ERROR] Query execution error | Data: {
+  "error": "column reference \"column_name\" is ambiguous",
+  "stack": "error: column reference \"column_name\" is ambiguous\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-29 21:35:21.347] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:21.347] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "information_schema",
+      "table": "columns"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:21.347] [DEBUG] SQL Query | Data: {
+  "sql": "-- Verificar que el campo fan_pwm_duty se agregó correctamente\nSELECT \n    column_name,\n    data_type,\n    is_nullable,\n    column_default\nFROM information_schema.columns\nWHERE table_schema = 'public' \n    AND table_name = 'device_status'\n    AND column_name = 'fan_pwm_duty';",
+  "database": "esag-alarm-db",
+  "queryId": "1756524921347-0.20672673129348884"
+}
+[DEVELOPMENT] [2025-08-29 21:35:35.507] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:35.507] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "pg_constraint"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:35:35.508] [DEBUG] SQL Query | Data: {
+  "sql": "-- Verificar las restricciones CHECK en la tabla\nSELECT \n    conname AS constraint_name,\n    pg_get_constraintdef(oid) AS constraint_definition\nFROM pg_constraint\nWHERE conrelid = 'device_status'::regclass\n    AND contype = 'c';",
+  "database": "esag-alarm-db",
+  "queryId": "1756524935508-0.9852061926630735"
+}
+[DEVELOPMENT] [2025-08-29 21:36:37.432] [INFO] Performance Summary | Data: {
+  "uptime": "610 minutes",
+  "cpuUser": "0.47 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:36:37.432] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.35 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.52 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:41:37.434] [INFO] Performance Summary | Data: {
+  "uptime": "615 minutes",
+  "cpuUser": "0.47 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:41:37.435] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.35 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.55 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:41:47.237] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:41:47.237] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "information_schema",
+      "table": "tables"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:41:47.246] [DEBUG] SQL Query | Data: {
+  "sql": "-- Verificar qué tablas ya existen\nSELECT table_name \nFROM information_schema.tables \nWHERE table_schema = 'public' \n    AND table_type = 'BASE TABLE'\nORDER BY table_name;",
+  "database": "esag-alarm-db",
+  "queryId": "1756525307246-0.8104227817053147"
+}
+[DEVELOPMENT] [2025-08-29 21:46:37.437] [INFO] Performance Summary | Data: {
+  "uptime": "620 minutes",
+  "cpuUser": "0.47 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:46:37.437] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.46 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.83 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:51:21.119] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:21.119] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "information_schema",
+      "table": "columns"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:21.129] [DEBUG] SQL Query | Data: {
+  "sql": "-- Verificar si existe el campo uptime en device_status\nSELECT column_name, data_type \nFROM information_schema.columns \nWHERE table_name = 'device_status' \n  AND column_name = 'uptime';",
+  "database": "esag-alarm-db",
+  "queryId": "1756525881129-0.2481279432630472"
+}
+[DEVELOPMENT] [2025-08-29 21:51:32.487] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:32.487] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:32.487] [DEBUG] SQL Query | Data: {
+  "sql": "-- Crear enum para change_type\nCREATE TYPE change_type_enum AS ENUM (\n    'ALARM',        -- Cambio en panic1, panic2, o box_sw\n    'STATE_CHANGE', -- Cambio en device_state\n    'CONNECTION',   -- Cambio en is_online\n    'SENSOR_DATA',  -- Cambio en temperatura/humedad/fan\n    'PERIODIC',     -- Registro periódico forzado\n    'MANUAL',       -- Registro manual/comando\n    'MULTIPLE'      -- Cambios múltiples/combinados\n);",
+  "database": "esag-alarm-db",
+  "queryId": "1756525892487-0.6523915938775302"
+}
+[DEVELOPMENT] [2025-08-29 21:51:37.450] [INFO] Performance Summary | Data: {
+  "uptime": "625 minutes",
+  "cpuUser": "0.47 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:51:37.450] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.64 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.46 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 21:51:42.893] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:42.893] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "heartbeats"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:42.893] [DEBUG] SQL Query | Data: {
+  "sql": "-- Crear tabla heartbeats\nCREATE TABLE heartbeats (\n  time TIMESTAMPTZ NOT NULL,\n  device_id INTEGER NOT NULL REFERENCES devices(id) ON DELETE CASCADE,\n  \n  -- Sensor data (solo se guarda cuando cambia más del umbral)\n  temperature REAL,                             \n  humidity REAL,                                \n  fan_pwm_duty SMALLINT CHECK (fan_pwm_duty >= 0 AND fan_pwm_duty <= 100),                        \n  \n  -- I/O states (SIEMPRE se guardan cuando cambian)\n  panic1 BOOLEAN,\n  panic2 BOOLEAN,\n  siren BOOLEAN,\n  turret BOOLEAN,\n  box_sw BOOLEAN,\n  \n  -- Tipo de cambio (enum eficiente)\n  change_type change_type_enum NOT NULL\n);",
+  "database": "esag-alarm-db",
+  "queryId": "1756525902893-0.3867773988857348"
+}
+[DEVELOPMENT] [2025-08-29 21:51:50.809] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:50.809] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:51:50.809] [DEBUG] SQL Query | Data: {
+  "sql": "-- Crear índices para heartbeats\nCREATE INDEX idx_heartbeats_device_time ON heartbeats(device_id, time DESC);\nCREATE INDEX idx_heartbeats_change_type ON heartbeats(device_id, change_type, time DESC);\nCREATE INDEX idx_heartbeats_alarm ON heartbeats(device_id, time DESC) \n  WHERE change_type IN ('ALARM', 'MULTIPLE');",
+  "database": "esag-alarm-db",
+  "queryId": "1756525910809-0.8952407991420657"
+}
+[DEVELOPMENT] [2025-08-29 21:55:20.694] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:55:20.695] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "CREATE"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:55:20.703] [DEBUG] SQL Query | Data: {
+  "sql": "-- Create enum for alarm types\nCREATE TYPE alarm_type_enum AS ENUM (\n    'UNKNOWN',\n    'PANIC1',\n    'PANIC2',\n    'TAMPER',\n    'FIRE',\n    'INTRUSION',\n    'MEDICAL',\n    'DURESS',\n    'OUTPUT_EVENT'\n);\n\n-- Create enum for event states  \nCREATE TYPE event_state_enum AS ENUM (\n    'INACTIVE',\n    'ACTIVE',\n    'TEST',\n    'STARTING',\n    'STOPPING'\n);\n\n-- Create enum for priority levels\nCREATE TYPE priority_enum AS ENUM (\n    'LOW',\n    'MEDIUM',\n    'HIGH',\n    'CRITICAL'\n);\n\n-- Create alarm_events table\nCREATE TABLE alarm_events (\n    id SERIAL PRIMARY KEY,\n    device_id INTEGER NOT NULL REFERENCES devices(id) ON DELETE CASCADE,\n    sequence INTEGER NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL,\n    \n    -- Alarm details\n    alarm_type alarm_type_enum NOT NULL,\n    event_state event_state_enum NOT NULL,\n    priority priority_enum NOT NULL DEFAULT 'MEDIUM',\n    physical_state BOOLEAN DEFAULT false,\n    \n    -- Output event specific fields (nullable for non-output events)\n    output_type INTEGER,\n    pattern_type INTEGER,\n    duration_seconds INTEGER,\n    elapsed_seconds INTEGER,\n    \n    -- Resolution tracking\n    resolved_at TIMESTAMPTZ,\n    resolution_notes TEXT,\n    acknowledged_at TIMESTAMPTZ,\n    acknowledged_by VARCHAR(50),\n    \n    -- Metadata\n    created_at TIMESTAMPTZ DEFAULT NOW(),\n    updated_at TIMESTAMPTZ DEFAULT NOW()\n);\n\n-- Create indexes for performance\nCREATE INDEX idx_alarm_events_device_id ON alarm_events(device_id);\nCREATE INDEX idx_alarm_events_timestamp ON alarm_events(timestamp DESC);\nCREATE INDEX idx_alarm_events_alarm_type ON alarm_events(alarm_type);\nCREATE INDEX idx_alarm_events_event_state ON alarm_events(event_state);\nCREATE INDEX idx_alarm_events_priority ON alarm_events(priority);\nCREATE INDEX idx_alarm_events_unresolved ON alarm_events(device_id, resolved_at) WHERE resolved_at IS NULL;\n\n-- Create update trigger\nCREATE TRIGGER update_alarm_events_updated_at\n    BEFORE UPDATE ON alarm_events\n    FOR EACH ROW\n    EXECUTE FUNCTION update_updated_at_column();\n\n-- Add comments for documentation\nCOMMENT ON TABLE alarm_events IS 'Historical log of all alarm events and output state changes';\nCOMMENT ON COLUMN alarm_events.sequence IS 'Anti-replay sequence number from device';\nCOMMENT ON COLUMN alarm_events.alarm_type IS 'Type of alarm or output event';\nCOMMENT ON COLUMN alarm_events.event_state IS 'Current state of the event';\nCOMMENT ON COLUMN alarm_events.physical_state IS 'Raw sensor state: true=HIGH, false=LOW';\nCOMMENT ON COLUMN alarm_events.output_type IS 'For OUTPUT_EVENT: OUT_SIREN, OUT_TURRET, etc.';\nCOMMENT ON COLUMN alarm_events.pattern_type IS 'For OUTPUT_EVENT: PATTERN_PULSE, PATTERN_BLINK, etc.';\nCOMMENT ON COLUMN alarm_events.duration_seconds IS 'Configured duration (0=permanent)';\nCOMMENT ON COLUMN alarm_events.elapsed_seconds IS 'Actual elapsed time when event ends';\nCOMMENT ON COLUMN alarm_events.resolved_at IS 'When alarm was resolved/cleared';\nCOMMENT ON COLUMN alarm_events.acknowledged_at IS 'When alarm was acknowledged by operator';",
+  "database": "esag-alarm-db",
+  "queryId": "1756526120703-0.5361535620982671"
+}
+[DEVELOPMENT] [2025-08-29 21:55:59.125] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:55:59.125] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "CREATE"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 21:55:59.135] [DEBUG] SQL Query | Data: {
+  "sql": "-- Create enum for command types\nCREATE TYPE command_type_enum AS ENUM (\n    'UNKNOWN',\n    'SYSTEM',\n    'CONFIG',\n    'OUTPUT',\n    'DIAGNOSTIC',\n    'OTA'\n);\n\n-- Create enum for command status\nCREATE TYPE command_status_enum AS ENUM (\n    'PENDING',\n    'SENT',\n    'ACKNOWLEDGED',\n    'COMPLETED',\n    'FAILED',\n    'TIMEOUT',\n    'CANCELLED'\n);\n\n-- Create command_log table\nCREATE TABLE command_log (\n    id SERIAL PRIMARY KEY,\n    device_id INTEGER NOT NULL REFERENCES devices(id) ON DELETE CASCADE,\n    \n    -- Command identification\n    request_id UUID NOT NULL,\n    sequence INTEGER NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL,\n    \n    -- Command details\n    command_type command_type_enum NOT NULL,\n    command_data JSONB NOT NULL,  -- Store full command payload as JSON\n    auth_level INTEGER DEFAULT 0 CHECK (auth_level >= 0 AND auth_level <= 2),\n    \n    -- Status tracking\n    status command_status_enum NOT NULL DEFAULT 'PENDING',\n    sent_at TIMESTAMPTZ,\n    acknowledged_at TIMESTAMPTZ,\n    completed_at TIMESTAMPTZ,\n    failed_at TIMESTAMPTZ,\n    \n    -- Response data\n    response_data JSONB,  -- Store response payload as JSON\n    response_code INTEGER,\n    error_message TEXT,\n    \n    -- Retry tracking\n    retry_count INTEGER DEFAULT 0,\n    max_retries INTEGER DEFAULT 3,\n    next_retry_at TIMESTAMPTZ,\n    \n    -- Metadata\n    initiated_by VARCHAR(50),  -- User or system that initiated command\n    notes TEXT,\n    created_at TIMESTAMPTZ DEFAULT NOW(),\n    updated_at TIMESTAMPTZ DEFAULT NOW()\n);\n\n-- Create indexes for performance\nCREATE INDEX idx_command_log_device_id ON command_log(device_id);\nCREATE INDEX idx_command_log_request_id ON command_log(request_id);\nCREATE INDEX idx_command_log_status ON command_log(status);\nCREATE INDEX idx_command_log_command_type ON command_log(command_type);\nCREATE INDEX idx_command_log_timestamp ON command_log(timestamp DESC);\nCREATE INDEX idx_command_log_pending ON command_log(device_id, status) WHERE status IN ('PENDING', 'SENT');\n\n-- Create update trigger\nCREATE TRIGGER update_command_log_updated_at\n    BEFORE UPDATE ON command_log\n    FOR EACH ROW\n    EXECUTE FUNCTION update_updated_at_column();\n\n-- Add comments for documentation\nCOMMENT ON TABLE command_log IS 'Log of all commands sent to devices with tracking and responses';\nCOMMENT ON COLUMN command_log.request_id IS 'UUID for command correlation and tracking';\nCOMMENT ON COLUMN command_log.sequence IS 'Anti-replay sequence number';\nCOMMENT ON COLUMN command_log.command_data IS 'Full command payload in JSON format';\nCOMMENT ON COLUMN command_log.auth_level IS 'Authentication level: 0=none, 1=basic, 2=admin';\nCOMMENT ON COLUMN command_log.status IS 'Current status of command execution';\nCOMMENT ON COLUMN command_log.response_data IS 'Response payload from device in JSON format';\nCOMMENT ON COLUMN command_log.retry_count IS 'Number of retry attempts made';\nCOMMENT ON COLUMN command_log.initiated_by IS 'User, system, or process that initiated the command';",
+  "database": "esag-alarm-db",
+  "queryId": "1756526159135-0.42998957749687094"
+}
+[DEVELOPMENT] [2025-08-29 21:56:37.455] [INFO] Performance Summary | Data: {
+  "uptime": "630 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 21:56:37.455] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.60 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.61 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.05 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:01:37.470] [INFO] Performance Summary | Data: {
+  "uptime": "635 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:01:37.470] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.60 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.63 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:06:37.472] [INFO] Performance Summary | Data: {
+  "uptime": "640 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:06:37.472] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.60 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.66 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:11:37.478] [INFO] Performance Summary | Data: {
+  "uptime": "645 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:11:37.478] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.71 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.69 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:16:37.479] [INFO] Performance Summary | Data: {
+  "uptime": "650 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:16:37.479] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.68 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.72 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:21:37.491] [INFO] Performance Summary | Data: {
+  "uptime": "655 minutes",
+  "cpuUser": "0.52 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:21:37.491] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.68 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.75 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:26:37.495] [INFO] Performance Summary | Data: {
+  "uptime": "660 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:26:37.495] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.68 MB",
+  "heapTotal": "15.39 MB",
+  "heapUsed": "13.78 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:28:28.799] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:28:28.799] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "IF"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:28:28.808] [DEBUG] SQL Query | Data: {
+  "sql": "-- Eliminar tabla existente si es necesario\nDROP TABLE IF EXISTS alarm_events CASCADE;\n\n-- Recrear enums con valores correctos del protobuf\nDROP TYPE IF EXISTS alarm_type_enum CASCADE;\nCREATE TYPE alarm_type_enum AS ENUM (\n    'UNKNOWN',      -- 0\n    'PANIC1',       -- 1\n    'PANIC2',       -- 2\n    'TAMPER',       -- 3\n    'FIRE',         -- 4 (reservado)\n    'INTRUSION',    -- 5 (reservado)\n    'MEDICAL',      -- 6 (reservado)\n    'DURESS',       -- 7 (reservado)\n    'OUTPUT_EVENT'  -- 10\n);\n\nDROP TYPE IF EXISTS event_state_enum CASCADE;\nCREATE TYPE event_state_enum AS ENUM (\n    'INACTIVE',     -- 0: Normal/Apagado/Patrón terminado\n    'ACTIVE',       -- 1: Activo/Encendido/Patrón en ejecución\n    'TEST',         -- 2: Modo prueba\n    'STARTING',     -- 3: Patrón iniciando\n    'STOPPING'      -- 4: Patrón terminando\n);\n\nDROP TYPE IF EXISTS priority_enum CASCADE;\nCREATE TYPE priority_enum AS ENUM (\n    'LOW',          -- 0\n    'MEDIUM',       -- 1\n    'HIGH',         -- 2\n    'CRITICAL'      -- 3\n);\n\n-- Crear tabla alarm_events simplificada\nCREATE TABLE alarm_events (\n    -- Identificación primaria\n    id SERIAL PRIMARY KEY,\n    device_id INTEGER NOT NULL REFERENCES devices(id) ON DELETE CASCADE,\n    \n    -- Datos del mensaje AlarmEvent\n    sequence INTEGER NOT NULL,                    -- Anti-replay sequence\n    timestamp TIMESTAMPTZ NOT NULL,               -- Timestamp del evento desde el dispositivo\n    alarm_type alarm_type_enum NOT NULL,          -- Tipo de alarma/evento\n    event_state event_state_enum NOT NULL,        -- Estado actual del evento\n    priority priority_enum NOT NULL DEFAULT 'MEDIUM',  -- Prioridad del evento\n    physical_state BOOLEAN DEFAULT false,         -- Estado físico del sensor (true=HIGH)\n    \n    -- Campos específicos para OUTPUT_EVENT\n    output_type INTEGER,                          -- OUT_SIREN=1, OUT_TURRET=2, etc.\n    pattern_type INTEGER,                         -- PATTERN_PULSE=2, PATTERN_BLINK_SLOW=3, etc.\n    duration_seconds INTEGER,                     -- Duración configurada (0=permanente)\n    elapsed_seconds INTEGER,                      -- Tiempo real transcurrido\n    \n    -- Timestamps del sistema\n    created_at TIMESTAMPTZ DEFAULT NOW(),\n    updated_at TIMESTAMPTZ DEFAULT NOW()\n);\n\n-- Índices optimizados\nCREATE INDEX idx_alarm_events_device_timestamp ON alarm_events(device_id, timestamp DESC);\nCREATE INDEX idx_alarm_events_type_state ON alarm_events(alarm_type, event_state);\nCREATE INDEX idx_alarm_events_priority ON alarm_events(priority, device_id);\nCREATE INDEX idx_alarm_events_active ON alarm_events(device_id, event_state) \n    WHERE event_state = 'ACTIVE';\nCREATE INDEX idx_alarm_events_output ON alarm_events(device_id, output_type, pattern_type) \n    WHERE alarm_type = 'OUTPUT_EVENT';\n\n-- Trigger para updated_at\nCREATE TRIGGER update_alarm_events_updated_at\n    BEFORE UPDATE ON alarm_events\n    FOR EACH ROW\n    EXECUTE FUNCTION update_updated_at_column();\n\n-- Comentarios de documentación\nCOMMENT ON TABLE alarm_events IS 'Registro de eventos de alarma y cambios de estado de salidas';\nCOMMENT ON COLUMN alarm_events.sequence IS 'Número de secuencia anti-replay del dispositivo';\nCOMMENT ON COLUMN alarm_events.alarm_type IS 'Tipo de alarma o evento de salida';\nCOMMENT ON COLUMN alarm_events.event_state IS 'Estado del evento: INACTIVE, ACTIVE, TEST, STARTING, STOPPING';\nCOMMENT ON COLUMN alarm_events.physical_state IS 'Estado físico del sensor: true=HIGH, false=LOW';\nCOMMENT ON COLUMN alarm_events.output_type IS 'Para OUTPUT_EVENT: 1=SIREN, 2=TURRET, 3=RELAY1, 4=RELAY2, 5=FAN';\nCOMMENT ON COLUMN alarm_events.pattern_type IS 'Tipo de patrón: 1=CONSTANT, 2=PULSE, 3=BLINK_SLOW, etc.';\nCOMMENT ON COLUMN alarm_events.duration_seconds IS 'Duración configurada (0=permanente)';\nCOMMENT ON COLUMN alarm_events.elapsed_seconds IS 'Tiempo real transcurrido cuando termina';",
+  "database": "esag-alarm-db",
+  "queryId": "1756528108808-0.5508326787125772"
+}
+[DEVELOPMENT] [2025-08-29 22:29:52.417] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:29:52.417] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "information_schema",
+      "table": "tables"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:29:52.427] [DEBUG] SQL Query | Data: {
+  "sql": "-- Verificar qué tablas existen actualmente\nSELECT table_name \nFROM information_schema.tables \nWHERE table_schema = 'public' \nAND table_type = 'BASE TABLE'\nORDER BY table_name;",
+  "database": "esag-alarm-db",
+  "queryId": "1756528192427-0.2752044971042422"
+}
+[DEVELOPMENT] [2025-08-29 22:31:37.495] [INFO] Performance Summary | Data: {
+  "uptime": "665 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:31:37.496] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "49.95 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "13.58 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:31:53.727] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:31:53.727] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "information_schema",
+      "table": "columns"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:31:53.736] [DEBUG] SQL Query | Data: {
+  "sql": "-- Obtener estructura detallada de la tabla command_log\nSELECT \n    column_name,\n    data_type,\n    character_maximum_length,\n    column_default,\n    is_nullable,\n    udt_name\nFROM information_schema.columns\nWHERE table_name = 'command_log'\nORDER BY ordinal_position;",
+  "database": "esag-alarm-db",
+  "queryId": "1756528313736-0.3228960753652288"
+}
+[DEVELOPMENT] [2025-08-29 22:32:00.889] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:32:00.889] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "unknown",
+      "schema": "public",
+      "table": "pg_type"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 22:32:00.890] [DEBUG] SQL Query | Data: {
+  "sql": "-- Obtener valores de los enums\nSELECT \n    t.typname AS enum_name,\n    string_agg(e.enumlabel, ', ' ORDER BY e.enumsortorder) AS enum_values\nFROM pg_type t \nJOIN pg_enum e ON t.oid = e.enumtypid\nWHERE t.typname IN ('command_type_enum', 'command_status_enum')\nGROUP BY t.typname;",
+  "database": "esag-alarm-db",
+  "queryId": "1756528320890-0.562220884121666"
+}
+[DEVELOPMENT] [2025-08-29 22:36:37.508] [INFO] Performance Summary | Data: {
+  "uptime": "670 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:36:37.508] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.05 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "14.10 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:41:37.511] [INFO] Performance Summary | Data: {
+  "uptime": "675 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:41:37.511] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.05 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "14.12 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:46:37.513] [INFO] Performance Summary | Data: {
+  "uptime": "680 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:46:37.513] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.05 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "14.15 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:51:37.519] [INFO] Performance Summary | Data: {
+  "uptime": "685 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:51:37.519] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.05 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "14.18 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 22:56:37.526] [INFO] Performance Summary | Data: {
+  "uptime": "690 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 22:56:37.526] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.06 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "14.21 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:01:37.526] [INFO] Performance Summary | Data: {
+  "uptime": "695 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:01:37.526] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.33 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "14.24 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:06:37.535] [INFO] Performance Summary | Data: {
+  "uptime": "700 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:06:37.535] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.33 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "14.27 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.06 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:11:37.550] [INFO] Performance Summary | Data: {
+  "uptime": "705 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:11:37.550] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.38 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "13.61 MB",
+  "external": "2.25 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:16:37.553] [INFO] Performance Summary | Data: {
+  "uptime": "710 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:16:37.554] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.38 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "13.64 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:21:37.554] [INFO] Performance Summary | Data: {
+  "uptime": "715 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:21:37.555] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.38 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "13.67 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:26:34.756] [INFO] Performance Summary | Data: {
+  "uptime": "720 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:26:34.756] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.39 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "13.70 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:31:34.764] [INFO] Performance Summary | Data: {
+  "uptime": "725 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.16 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:31:34.764] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.45 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "13.73 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:36:34.770] [INFO] Performance Summary | Data: {
+  "uptime": "730 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.19 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:36:34.770] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.45 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "13.75 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:41:34.773] [INFO] Performance Summary | Data: {
+  "uptime": "735 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.19 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:41:34.773] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.47 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "13.78 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:46:34.779] [INFO] Performance Summary | Data: {
+  "uptime": "740 minutes",
+  "cpuUser": "0.53 seconds",
+  "cpuSystem": "0.19 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:46:34.779] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "50.45 MB",
+  "heapTotal": "15.64 MB",
+  "heapUsed": "13.81 MB",
+  "external": "2.24 MB",
+  "arrayBuffers": "0.04 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.028] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.095] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-29 23:47:49.095] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-29 23:47:49.095] [DEBUG] Starting database connection test...
+[DEVELOPMENT] [2025-08-29 23:47:49.095] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.096] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-29 23:47:49.096] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-29 23:47:49.100] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-29 23:47:49.107] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-29 23:47:49.108] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.108] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-29 23:47:49.108] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-29 23:47:49.108] [DEBUG] Query parsing result: | Data: {
+  "data": [
+    {
+      "type": "select",
+      "operation": "READ",
+      "schema": "public",
+      "table": "pg_tables"
+    }
+  ]
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.117] [DEBUG] SQL Query | Data: {
+  "sql": "\n      SELECT\n        t.schemaname as schema,\n        t.tablename as name,\n        t.schemaname || '.' || t.tablename as full_name,\n        obj_description(c.oid, 'pg_class') as description,\n        pg_total_relation_size(c.oid) as total_size,\n        pg_table_size(c.oid) as table_size,\n        pg_indexes_size(c.oid) as indexes_size,\n        n_live_tup as row_count\n      FROM\n        pg_tables t\n        JOIN pg_class c ON c.relname = t.tablename\n        JOIN pg_namespace ns ON ns.oid = c.relnamespace AND ns.nspname = t.schemaname\n        LEFT JOIN pg_stat_user_tables s ON s.schemaname = t.schemaname AND s.relname = t.tablename\n      WHERE\n        t.schemaname NOT IN ('pg_catalog', 'information_schema')\n      ORDER BY\n        t.schemaname, t.tablename\n    ",
+  "database": "default",
+  "queryId": "1756532869117-0.11211081377647059"
+}
+[DEVELOPMENT] [2025-08-30T05:47:49.118Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.118] [DEBUG] Connection Event Duration | Data: {
+  "event": "connection successful",
+  "duration": "0ms"
+}
+[DEVELOPMENT] [2025-08-30T05:47:49.118Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.118] [DEBUG] Connection Event Duration | Data: {
+  "event": "connection successful",
+  "duration": "0ms"
+}
+[DEVELOPMENT] [2025-08-29 23:47:49.123] [INFO] Found 5 tables
+[DEVELOPMENT] [2025-08-29 23:52:49.036] [INFO] Performance Summary | Data: {
+  "uptime": "5 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:52:49.037] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.45 MB",
+  "heapTotal": "14.89 MB",
+  "heapUsed": "12.84 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}
+[DEVELOPMENT] [2025-08-29 23:57:49.051] [INFO] Performance Summary | Data: {
+  "uptime": "10 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-29 23:57:49.052] [DEBUG] Memory Usage | Data: {
+  "context": "performance-summary",
+  "rss": "61.49 MB",
+  "heapTotal": "14.89 MB",
+  "heapUsed": "12.89 MB",
+  "external": "2.23 MB",
+  "arrayBuffers": "0.03 MB"
+}

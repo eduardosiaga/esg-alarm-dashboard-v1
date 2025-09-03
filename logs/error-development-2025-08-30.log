@@ -1,0 +1,35 @@
+[DEVELOPMENT] [2025-08-30 08:33:36.184] [ERROR] Database connection failed | Data: {
+  "error": "",
+  "stack": "AggregateError [ECONNREFUSED]: \n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async testConnection (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:114:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:24:9",
+  "name": "AggregateError"
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.184] [ERROR] Database connection failed | Data: {
+  "error": "",
+  "stack": "AggregateError [ECONNREFUSED]: \n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async testConnection (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:114:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:312:13",
+  "name": "AggregateError"
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.185] [ERROR] Query execution error | Data: {
+  "error": "",
+  "stack": "AggregateError [ECONNREFUSED]: \n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:65:24)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:149:33",
+  "name": "AggregateError"
+}
+[DEVELOPMENT] [2025-08-30 23:10:40.354] [ERROR] Query execution error | Data: {
+  "error": "relation \"device\" does not exist",
+  "stack": "error: relation \"device\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-30 23:10:47.105] [ERROR] Query execution error | Data: {
+  "error": "column \"device_db_id\" does not exist",
+  "stack": "error: column \"device_db_id\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-30 23:12:13.647] [ERROR] Query execution error | Data: {
+  "error": "relation \"command_logs\" does not exist",
+  "stack": "error: relation \"command_logs\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-30 23:57:48.380] [ERROR] Query execution error | Data: {
+  "error": "relation \"command_logs\" does not exist",
+  "stack": "error: relation \"command_logs\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}

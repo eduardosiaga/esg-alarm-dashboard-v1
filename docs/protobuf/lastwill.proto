@@ -1,0 +1,23 @@
+syntax = "proto3";
+import "nanopb.proto";
+
+package esg.alarm;
+
+// Mensaje Last Will - Notificación de desconexión inesperada
+message LastWillMessage {
+    // Metadata básica
+    uint32 sequence = 1;           // Número de secuencia (para HMAC anti-replay)
+    uint32 timestamp = 2;          // Unix timestamp cuando se conectó (no cuando se desconectó)
+    uint32 device_db_id = 3;       // ID del dispositivo en DB
+    
+    // Estado al momento de conectar
+    uint32 uptime_at_connect = 4;  // Uptime cuando se estableció la conexión
+    string firmware = 5 [(nanopb).max_size = 16];  // Versión firmware
+    
+    // Información de red al conectar
+    uint32 ip_address = 6;         // IP en formato uint32
+    int32 rssi = 7;                // RSSI (WiFi) o 0 (Ethernet)
+    
+    // Identificación
+    string hostname = 8 [(nanopb).max_size = 32];  // Hostname del dispositivo
+}

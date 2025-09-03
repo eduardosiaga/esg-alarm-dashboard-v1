@@ -1,0 +1,35 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\.333b1787834a0949fd6fc4b5b4950d6d2e409bfa-audit.json",
+    "files": [
+        {
+            "date": 1756480788632,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\performance-development-2025-08-29.log",
+            "hash": "d4d14258c52cf6acdc1d390be001db10baddf006caa3af797f8633761fe4828c"
+        },
+        {
+            "date": 1756533769068,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\performance-development-2025-08-30.log",
+            "hash": "a1ecb7c64038d6a857c9810d9fff6db0194e468719409ef2fa567eb1e3338840"
+        },
+        {
+            "date": 1756620019956,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\performance-development-2025-08-31.log",
+            "hash": "de5a2a89a1cb0423fa87e19300e556cf4b74fd0978adc364e50dabc947067f9e"
+        },
+        {
+            "date": 1756706638282,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\performance-development-2025-09-01.log",
+            "hash": "407dca0a5e92d04b5e596e67490a0f010d0117a8b162cf736d2b5d29bac7dc01"
+        },
+        {
+            "date": 1756792878160,
+            "name": "H:\\03-development\\apps-web\\esg-alarm-dashboard\\logs\\performance-development-2025-09-02.log",
+            "hash": "341fdba04766d5760bb85705560307e40eb691459b040e899f0884f3180bf19a"
+        }
+    ],
+    "hashType": "sha256"
+}

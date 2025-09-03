@@ -1,0 +1,5 @@
+[DEVELOPMENT] [2025-08-29 21:35:15.150] [ERROR] Query execution error | Data: {
+  "error": "column reference \"column_name\" is ambiguous",
+  "stack": "error: column reference \"column_name\" is ambiguous\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}

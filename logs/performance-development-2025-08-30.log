@@ -1,0 +1,560 @@
+[DEVELOPMENT] [2025-08-30 00:02:49.068] [INFO] Performance Summary | Data: {
+  "uptime": "15 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 00:07:49.073] [INFO] Performance Summary | Data: {
+  "uptime": "20 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 00:12:49.075] [INFO] Performance Summary | Data: {
+  "uptime": "25 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 00:17:49.075] [INFO] Performance Summary | Data: {
+  "uptime": "30 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 00:22:49.086] [INFO] Performance Summary | Data: {
+  "uptime": "35 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 00:27:49.096] [INFO] Performance Summary | Data: {
+  "uptime": "40 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 00:32:49.111] [INFO] Performance Summary | Data: {
+  "uptime": "45 minutes",
+  "cpuUser": "0.16 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.058] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.170] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-30 08:33:36.170] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-30 08:33:36.170] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.171] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-30 08:33:36.171] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-30 08:33:36.175] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-30 08:33:36.182] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-30 08:33:36.182] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.182] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-30 08:33:36.182] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-30 08:33:36.184] [ERROR] Database connection failed | Data: {
+  "error": "",
+  "stack": "AggregateError [ECONNREFUSED]: \n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async testConnection (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:114:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:24:9",
+  "name": "AggregateError"
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.184] [ERROR] Database connection failed | Data: {
+  "error": "",
+  "stack": "AggregateError [ECONNREFUSED]: \n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async testConnection (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:114:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:312:13",
+  "name": "AggregateError"
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.185] [ERROR] Query execution error | Data: {
+  "error": "",
+  "stack": "AggregateError [ECONNREFUSED]: \n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg-pool\\index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:65:24)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:149:33",
+  "name": "AggregateError"
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.185] [WARN] Could not parse tables result: | Data: {
+  "data": [
+    {}
+  ]
+}
+[DEVELOPMENT] [2025-08-30 08:33:36.185] [INFO] Found 0 tables
+[DEVELOPMENT] [2025-08-30 08:34:03.869] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-30 08:34:03.933] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-30 08:34:03.934] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-30 08:34:03.934] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 08:34:03.934] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-30 08:34:03.935] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-30 08:34:03.939] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-30 08:34:03.946] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-30 08:34:03.946] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 08:34:03.946] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-30 08:34:03.947] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-30T14:34:03.972Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-30T14:34:03.973Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-30 08:34:04.001] [INFO] Found 5 tables
+[DEVELOPMENT] [2025-08-30 08:38:44.563] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 08:39:03.874] [INFO] Performance Summary | Data: {
+  "uptime": "5 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 08:44:03.876] [INFO] Performance Summary | Data: {
+  "uptime": "10 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 08:49:03.877] [INFO] Performance Summary | Data: {
+  "uptime": "15 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 08:54:03.880] [INFO] Performance Summary | Data: {
+  "uptime": "20 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 08:59:03.881] [INFO] Performance Summary | Data: {
+  "uptime": "25 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:04:03.894] [INFO] Performance Summary | Data: {
+  "uptime": "30 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:09:03.901] [INFO] Performance Summary | Data: {
+  "uptime": "35 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:14:03.913] [INFO] Performance Summary | Data: {
+  "uptime": "40 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:19:03.921] [INFO] Performance Summary | Data: {
+  "uptime": "45 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:24:03.922] [INFO] Performance Summary | Data: {
+  "uptime": "50 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:29:03.923] [INFO] Performance Summary | Data: {
+  "uptime": "55 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:34:03.923] [INFO] Performance Summary | Data: {
+  "uptime": "60 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:39:03.925] [INFO] Performance Summary | Data: {
+  "uptime": "65 minutes",
+  "cpuUser": "0.19 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:44:03.927] [INFO] Performance Summary | Data: {
+  "uptime": "70 minutes",
+  "cpuUser": "0.20 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:49:03.930] [INFO] Performance Summary | Data: {
+  "uptime": "75 minutes",
+  "cpuUser": "0.20 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 09:54:03.931] [INFO] Performance Summary | Data: {
+  "uptime": "80 minutes",
+  "cpuUser": "0.20 seconds",
+  "cpuSystem": "0.22 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:08:12.545] [INFO] PostgreSQL MCP Server starting in development mode | Data: {
+  "environment": "development",
+  "logLevel": "debug",
+  "consoleEnabled": true,
+  "fileLogging": true,
+  "performanceMonitoring": true
+}
+[DEVELOPMENT] [2025-08-30 22:08:12.610] [INFO] Starting PostgreSQL MCP server v1.0.0...
+[DEVELOPMENT] [2025-08-30 22:08:12.610] [INFO] Log level set to: info
+[DEVELOPMENT] [2025-08-30 22:08:12.610] [INFO] PostgreSQL Configuration: | Data: {
+  "data": [
+    "{\n  \"host\": \"localhost\",\n  \"port\": \"5432\",\n  \"connectionType\": \"TCP/IP\",\n  \"user\": \"postgres\",\n  \"password\": \"******\",\n  \"database\": \"esag-alarm-db\",\n  \"ssl\": \"disabled\",\n  \"multiDbMode\": \"disabled\"\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:08:12.611] [INFO] Running in standalone mode
+[DEVELOPMENT] [2025-08-30 22:08:12.611] [INFO] Attempting to test database connection...
+[DEVELOPMENT] [2025-08-30 22:08:12.615] [INFO] Server started and listening on stdio
+[DEVELOPMENT] [2025-08-30 22:08:12.622] [INFO] Handling ListToolsRequest
+[DEVELOPMENT] [2025-08-30 22:08:12.622] [INFO] ListToolsRequest response: | Data: {
+  "data": [
+    "{\n  \"tools\": [\n    {\n      \"name\": \"postgres_query\",\n      \"description\": \"[PostgreSQL MCP Server [v1.0.0]] Run SQL queries against PostgreSQL database (READ-ONLY)\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"sql\": {\n            \"type\": \"string\",\n            \"description\": \"The SQL query to execute\"\n          },\n          \"database\": {\n            \"type\": \"string\",\n            \"description\": \"Database alias (for multi-DB mode)\"\n          }\n        },\n        \"required\": [\n          \"sql\"\n        ]\n      }\n    }\n  ]\n}"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:08:12.623] [INFO] Handling ListResourcesRequest
+[DEVELOPMENT] [2025-08-30 22:08:12.623] [INFO] Connection info: host: localhost, port: 5432
+[DEVELOPMENT] [2025-08-31T04:08:12.633Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-31T04:08:12.633Z] [INFO] Database connection successful | Data: {
+  "database": "default"
+}
+[DEVELOPMENT] [2025-08-30 22:08:12.638] [INFO] Found 5 tables
+[DEVELOPMENT] [2025-08-30 22:13:12.553] [INFO] Performance Summary | Data: {
+  "uptime": "5 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:18:12.556] [INFO] Performance Summary | Data: {
+  "uptime": "10 minutes",
+  "cpuUser": "0.31 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:20:22.529] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:20:35.329] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:23:12.559] [INFO] Performance Summary | Data: {
+  "uptime": "15 minutes",
+  "cpuUser": "0.33 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:25:23.806] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:25:29.765] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:27:04.168] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:27:45.950] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:28:12.574] [INFO] Performance Summary | Data: {
+  "uptime": "20 minutes",
+  "cpuUser": "0.34 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:30:10.642] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:33:12.579] [INFO] Performance Summary | Data: {
+  "uptime": "25 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:38:12.581] [INFO] Performance Summary | Data: {
+  "uptime": "30 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:43:12.582] [INFO] Performance Summary | Data: {
+  "uptime": "35 minutes",
+  "cpuUser": "0.36 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:45:06.791] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:45:30.846] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:48:12.586] [INFO] Performance Summary | Data: {
+  "uptime": "40 minutes",
+  "cpuUser": "0.38 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:52:10.941] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 22:53:12.597] [INFO] Performance Summary | Data: {
+  "uptime": "45 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 22:58:10.192] [INFO] Performance Summary | Data: {
+  "uptime": "50 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:03:10.193] [INFO] Performance Summary | Data: {
+  "uptime": "55 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:08:10.195] [INFO] Performance Summary | Data: {
+  "uptime": "60 minutes",
+  "cpuUser": "0.39 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:10:40.345] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:10:40.354] [ERROR] Query execution error | Data: {
+  "error": "relation \"device\" does not exist",
+  "stack": "error: relation \"device\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-30 23:10:47.104] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:10:47.105] [ERROR] Query execution error | Data: {
+  "error": "column \"device_db_id\" does not exist",
+  "stack": "error: column \"device_db_id\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-30 23:10:51.373] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:12:13.638] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:12:13.647] [ERROR] Query execution error | Data: {
+  "error": "relation \"command_logs\" does not exist",
+  "stack": "error: relation \"command_logs\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-30 23:13:05.250] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:13:10.209] [INFO] Performance Summary | Data: {
+  "uptime": "65 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:18:10.216] [INFO] Performance Summary | Data: {
+  "uptime": "70 minutes",
+  "cpuUser": "0.41 seconds",
+  "cpuSystem": "0.08 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:19:56.508] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:23:10.217] [INFO] Performance Summary | Data: {
+  "uptime": "75 minutes",
+  "cpuUser": "0.42 seconds",
+  "cpuSystem": "0.09 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:28:10.219] [INFO] Performance Summary | Data: {
+  "uptime": "80 minutes",
+  "cpuUser": "0.44 seconds",
+  "cpuSystem": "0.11 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:33:10.221] [INFO] Performance Summary | Data: {
+  "uptime": "85 minutes",
+  "cpuUser": "0.44 seconds",
+  "cpuSystem": "0.11 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:38:10.230] [INFO] Performance Summary | Data: {
+  "uptime": "90 minutes",
+  "cpuUser": "0.44 seconds",
+  "cpuSystem": "0.11 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:43:10.245] [INFO] Performance Summary | Data: {
+  "uptime": "95 minutes",
+  "cpuUser": "0.44 seconds",
+  "cpuSystem": "0.11 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:46:32.829] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:48:10.258] [INFO] Performance Summary | Data: {
+  "uptime": "100 minutes",
+  "cpuUser": "0.44 seconds",
+  "cpuSystem": "0.13 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:49:46.102] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:53:07.009] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:53:10.267] [INFO] Performance Summary | Data: {
+  "uptime": "105 minutes",
+  "cpuUser": "0.45 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}
+[DEVELOPMENT] [2025-08-30 23:57:48.370] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:57:48.380] [ERROR] Query execution error | Data: {
+  "error": "relation \"command_logs\" does not exist",
+  "stack": "error: relation \"command_logs\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-30 23:57:52.936] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:57:58.615] [INFO] Handling CallToolRequest: | Data: {
+  "data": [
+    "postgres_query"
+  ]
+}
+[DEVELOPMENT] [2025-08-30 23:58:10.271] [INFO] Performance Summary | Data: {
+  "uptime": "110 minutes",
+  "cpuUser": "0.45 seconds",
+  "cpuSystem": "0.14 seconds",
+  "environment": "development",
+  "nodeVersion": "v22.16.0"
+}

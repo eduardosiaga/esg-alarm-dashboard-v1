@@ -1,0 +1,25 @@
+[DEVELOPMENT] [2025-08-31 00:00:19.966] [ERROR] Query execution error | Data: {
+  "error": "invalid input syntax for type uuid: \"\"",
+  "stack": "error: invalid input syntax for type uuid: \"\"\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-31 00:05:52.974] [ERROR] Query execution error | Data: {
+  "error": "relation \"command_logs\" does not exist",
+  "stack": "error: relation \"command_logs\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-31 00:06:00.385] [ERROR] Query execution error | Data: {
+  "error": "relation \"CommandLog\" does not exist",
+  "stack": "error: relation \"CommandLog\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
+[DEVELOPMENT] [2025-08-31 00:07:39.062] [ERROR] Query execution error | Data: {
+  "error": "UPDATE operations are not allowed for schema 'public'",
+  "stack": "Error: UPDATE operations are not allowed for schema 'public'\n    at executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:62:19)\n    at executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:30)\n    at file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:26\n    at file:///H:/03-development/mcps/postgres-mcp/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js:334:36\n    at file:///H:/03-development/mcps/postgres-mcp/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/protocol.js:153:25\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+  "name": "Error"
+}
+[DEVELOPMENT] [2025-08-31 00:34:09.330] [ERROR] Query execution error | Data: {
+  "error": "relation \"command_response\" does not exist",
+  "stack": "error: relation \"command_response\" does not exist\n    at H:\\03-development\\mcps\\postgres-mcp\\node_modules\\pg\\lib\\client.js:545:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async executeQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:68:28)\n    at async executeReadOnlyQuery (file:///H:/03-development/mcps/postgres-mcp/dist/src/db/index.js:88:24)\n    at async file:///H:/03-development/mcps/postgres-mcp/dist/index.js:265:20",
+  "name": "error"
+}
